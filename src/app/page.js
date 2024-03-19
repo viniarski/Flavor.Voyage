@@ -1,28 +1,18 @@
 import Link from 'next/link';
 import RecipeCard from '../components/RecipeCard';
 import BlogPostCard from '../components/BlogPostCard';
+import Search from '../components/Search';
 import CarouselComponent from '../components/Carousel';
 
 export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-secondary py-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Welcome to Flavor Voyage</h1>
-          <p className="text-lg mb-8">
-            Discover delicious recipes and culinary adventures!
-          </p>
-          <p> SEARCH BAR</p>
-        </div>
+      <section className="bg-secondary">
+        <Search />
       </section>
 
-      {/* Carousel Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <CarouselComponent />
-        </div>
-      </section>
+      <CarouselComponent />
 
       {/* Featured Recipes Section */}
       <section className="bg-secondary py-16">
