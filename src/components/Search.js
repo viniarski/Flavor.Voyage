@@ -17,11 +17,12 @@ const Search = () => {
       className="relative bg-cover bg-center py-20"
       style={{ backgroundImage: "url('/images/4.avif')" }}
     >
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold mb-4 text-center text-white">
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      <div className="relative container mx-auto px-4">
+        <h1 className="text-5xl font-bold mb-4 text-center text-white">
           Welcome to Flavor Voyage
         </h1>
-        <p className="text-lg mb-8 text-center text-white">
+        <p className="text-xl mb-8 text-center text-white">
           Discover delicious recipes and culinary adventures!
         </p>
         <form onSubmit={handleSearch} className="max-w-md mx-auto">
