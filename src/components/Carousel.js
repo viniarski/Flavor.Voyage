@@ -48,7 +48,7 @@ const CarouselComponent = () => {
   };
 
   return (
-    <div className="relative h-[50vh]">
+    <div className="relative h-[55vh]">
       <div
         className="flex transition-transform duration-500"
         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -58,7 +58,7 @@ const CarouselComponent = () => {
             key={index}
             className="flex-shrink-0 w-full flex items-center justify-center"
           >
-            <div className="w-[50vh] h-[50vh] rounded-l-lg overflow-hidden">
+            <div className="w-[40vh] h-[40vh] rounded-l-lg overflow-hidden">
               <img
                 src={slide.image}
                 alt={slide.title}
