@@ -7,7 +7,6 @@ const Search = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // Perform search logic here with the searchQuery
     console.log('Search query:', searchQuery);
     // Reset the search query
     setSearchQuery('');
