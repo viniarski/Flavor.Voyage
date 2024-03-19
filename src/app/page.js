@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import RecipeCard from '../components/RecipeCard';
 import BlogPostCard from '../components/BlogPostCard';
+import CarouselComponent from '../components/Carousel';
 
 export default function HomePage() {
   return (
@@ -16,22 +17,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Recipes Section */}
+      {/* Carousel Section */}
       <section className="py-16">
+        <div className="container mx-auto px-4">
+          <CarouselComponent />
+        </div>
+      </section>
+
+      {/* Featured Recipes Section */}
+      <section className="bg-secondary py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8">Featured Recipes</h2>
         </div>
       </section>
 
       {/* Latest Blog Posts Section */}
-      <section className="bg-secondary py-16">
+      <section className=" py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8">Latest Blog Posts</h2>
         </div>
       </section>
 
       {/* Recipe Categories Section */}
-      <section className="bg-secondary py-16">
+      <section className=" py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8">Recipe Categories</h2>
         </div>
