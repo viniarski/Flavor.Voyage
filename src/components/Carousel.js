@@ -75,7 +75,7 @@ const CarouselComponent = () => {
   };
 
   return (
-    <div className="relative h-[55vh]">
+    <div className="relative h-[55vh] overflow-hidden">
       <div
         className="flex transition-transform duration-500"
         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
