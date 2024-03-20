@@ -6,11 +6,13 @@ const About = () => {
   return (
     <section
       className="py-16 bg-cover bg-center h-screen relative"
-      style={{ backgroundImage: "url('/images/1.avif')", height: '65vh' }}
+      style={{ backgroundImage: "url('/images/1.avif')", height: '60vh' }}
     >
-      <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       <div className="container mx-auto px-4 relative z-10">
-        <h2 className="text-3xl font-bold mb-4 text-accent">About us</h2>
+        <h2 className="text-3xl font-bold mb-8 text-accent text-white">
+          About us
+        </h2>
         <p className="text-lg text-white mb-8">
           Meet the team behind Flavor.Voyage
         </p>
@@ -34,13 +36,13 @@ const About = () => {
               With years of experience in the food industry and a deep love for
               cooking, we strive to create a platform that is both informative
               and engaging. From easy weeknight dinners to impressive dinner
-              party dishes, we've got you covered.
+              party dishes, we&apos;ve got you covered.
             </p>
             <p className="text-lg text-white">
               Join us on this exciting journey as we continue to grow our
               collection of recipes, share expert tips and tricks, and build a
-              vibrant community of food lovers. Together, let's make every meal
-              a flavorful voyage!
+              vibrant community of food lovers. Together, let&apos;s make every
+              meal a flavorful voyage!
             </p>
           </div>
         </div>
