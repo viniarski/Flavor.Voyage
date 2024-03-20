@@ -3,6 +3,7 @@ import RecipeCard from '../components/RecipeCard';
 import BlogPostCard from '../components/BlogPostCard';
 import Search from '../components/Search';
 import CarouselComponent from '../components/Carousel';
+import About from '../components/About';
 
 export default function HomePage() {
   return (
@@ -10,9 +11,17 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="bg-secondary">
         <Search />
+        <CarouselComponent />
       </section>
 
-      <CarouselComponent />
+      {/* Featured Recipes Section */}
+      <section className="py-16 bg-g">
+        <div className="bg-gray-200 py-64">
+          <h2 className="text-3xl text-center font-bold mb-8">
+            Featured Recipes
+          </h2>
+        </div>{' '}
+      </section>
 
       {/* Latest Blog Posts and Recipe Categories Sections */}
       <section className="py-16 bg-g">
@@ -32,12 +41,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* About us Section */}
-      <section className="py-64">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8">About us</h2>
-        </div>
-      </section>
+      <About />
     </div>
   );
 }

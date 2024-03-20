@@ -75,7 +75,7 @@ const CarouselComponent = () => {
   };
 
   return (
-    <div className="relative h-[55vh] overflow-hidden">
+    <div className="relative h-[58vh] overflow-hidden">
       <div
         className="flex transition-transform duration-500"
         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -140,7 +140,7 @@ const CarouselComponent = () => {
       >
         <img src="/icons/next.png" alt="Next" className="w-6 h-6" />
       </button>
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2 pb-4">
         {slides.map((_, index) => (
           <button
             key={index}
