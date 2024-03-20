@@ -14,7 +14,7 @@ const Search = () => {
 
   return (
     <div
-      className="relative bg-cover bg-center py-20"
+      className="relative bg-cover bg-center py-16"
       style={{ backgroundImage: "url('/images/4.avif')" }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
