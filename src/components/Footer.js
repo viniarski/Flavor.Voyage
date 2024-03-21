@@ -1,12 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          <div className="md:col-span-4">
             <h3 className="text-xl font-bold mb-4">Flavor Voyage</h3>
             <p className="text-gray-400">
               Discover a world of culinary delights with Flavor Voyage. Explore
@@ -14,38 +15,63 @@ const Footer = () => {
               adventure.
             </p>
           </div>
-          <div>
+          <div className="md:col-span-1"></div>
+          <div className="md:col-span-2">
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/">
-                  <span className="text-gray-400 hover:text-white">Home</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/">
-                  <span className="text-gray-400 hover:text-white">
-                    Recipes
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/">
-                  <span className="text-gray-400 hover:text-white">
-                    About Us
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/">
-                  <span className="text-gray-400 hover:text-white">
-                    Contact
-                  </span>
-                </Link>
-              </li>
-            </ul>
+            <div className="grid grid-cols-2 gap-x-8">
+              <ul className="space-y-2">
+                <li>
+                  <Link href="/">
+                    <span className="text-gray-400 hover:text-white">Home</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/">
+                    <span className="text-gray-400 hover:text-white">
+                      Recipes
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/">
+                    <span className="text-gray-400 hover:text-white">Blog</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/">
+                    <span className="text-gray-400 hover:text-white">
+                      About Us
+                    </span>
+                  </Link>
+                </li>
+              </ul>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="/contact">
+                    <span className="text-gray-400 hover:text-white">
+                      Contact
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://techeducators.co.uk/" target="_blank">
+                    <span className="text-gray-400 hover:text-white">
+                      Tech Educators
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/">
+                    <span className="text-gray-400 hover:text-white">
+                      Privacy Policy
+                    </span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div>
+          <div className="md:col-span-1"></div>
+          <div className="md:col-span-4">
             <h3 className="text-xl font-bold mb-4">Subscribe</h3>
             <p className="text-gray-400 mb-4">
               Stay updated with our latest recipes and food adventures.
@@ -75,13 +101,23 @@ const Footer = () => {
           </p>
           <div className="flex space-x-4">
             <a href="#" className="text-gray-400 hover:text-white">
-              <i className="fab fa-facebook"></i>
+              <Image
+                src="/icons/facebook.png"
+                alt="Facebook"
+                width={24}
+                height={24}
+              />
             </a>
             <a href="#" className="text-gray-400 hover:text-white">
-              <i className="fab fa-twitter"></i>
+              <Image src="/icons/x.png" alt="X" width={24} height={24} />
             </a>
             <a href="#" className="text-gray-400 hover:text-white">
-              <i className="fab fa-instagram"></i>
+              <Image
+                src="/icons/instagram.png"
+                alt="Instagram"
+                width={24}
+                height={24}
+              />
             </a>
           </div>
         </div>
