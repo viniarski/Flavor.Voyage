@@ -10,19 +10,17 @@ const About = () => {
     >
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       <div className="container mx-auto px-4 relative z-10">
-        <h2 className="text-3xl font-bold mb-8 text-accent text-white">
-          About us
-        </h2>
+        <h2 className="text-3xl font-bold mb-8 text-accent">About Us</h2>
         <p className="text-lg text-white mb-8">
           Meet the team behind Flavor.Voyage
         </p>
         <div className="flex flex-col md:flex-row items-center">
           <div className="w-full md:w-1/2 mb-8 md:mb-0">
             <div className="flex space-x-10">
-              <div className="w-36 h-36 bg-gray-300 rounded-full"></div>
-              <div className="w-36 h-36 bg-gray-300 rounded-full"></div>
-              <div className="w-36 h-36 bg-gray-300 rounded-full"></div>
-              <div className="w-36 h-36 bg-gray-300 rounded-full"></div>
+              <div className="w-36 h-36 bg-gray-300 rounded-full transition duration-300 ease-in-out transform hover:scale-105 aspect-square object-cover"></div>
+              <div className="w-36 h-36 bg-gray-300 rounded-full transition duration-300 ease-in-out transform hover:scale-105 aspect-square object-cover"></div>
+              <div className="w-36 h-36 bg-gray-300 rounded-full transition duration-300 ease-in-out transform hover:scale-105 aspect-square object-cover"></div>
+              <div className="w-36 h-36 bg-gray-300 rounded-full transition duration-300 ease-in-out transform hover:scale-105 aspect-square object-cover"></div>
             </div>
           </div>
           <div className="w-full md:w-1/2">
