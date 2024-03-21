@@ -36,7 +36,6 @@ export default function Header() {
 
           <Link
             href={'/'}
-
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
           >
             Home
