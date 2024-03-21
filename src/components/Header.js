@@ -35,13 +35,16 @@ export default function Header() {
           )}
 
           <Link
-            href={"/"}
+            href={'/'}
+
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
           >
             Home
           </Link>
           <Link
-            href={"#"}
+
+            href={'/recipes'}
+
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
           >
             Recipes
