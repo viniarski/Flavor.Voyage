@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import RecipeCard from '../components/RecipeCard';
-import BlogPostCard from '../components/BlogPostCard';
-import Search from '../components/Search';
-import CarouselComponent from '../components/Carousel';
-import About from '../components/About';
+import Link from "next/link";
+import RecipeCard from "../components/RecipeCard";
+import BlogPostCard from "../components/BlogPostList";
+import Search from "../components/Search";
+import CarouselComponent from "../components/Carousel";
+import About from "../components/About";
 
 export default function HomePage() {
   return (
@@ -20,7 +20,7 @@ export default function HomePage() {
           <h2 className="text-3xl text-center font-bold mb-8">
             Featured Recipes
           </h2>
-        </div>{' '}
+        </div>{" "}
       </section>
 
       {/* Latest Blog Posts and Recipe Categories Sections */}
