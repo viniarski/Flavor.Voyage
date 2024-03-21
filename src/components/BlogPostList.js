@@ -13,13 +13,9 @@ export default function BlogPostList() {
 
       const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-      const { data: blogs, error } = await supabase.from("blogs").select("*");
+      const { data } = await supabase.from("blogs").select("*");
 
-      if (error) {
-        console.error("Error fetching blogs:", error);
-      } else {
-        setBlogs(blogs);
-      }
+      setBlogs(data);
     };
 
     fetchBlogPosts();
