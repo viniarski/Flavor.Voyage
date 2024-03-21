@@ -1,13 +1,13 @@
-import Link from 'next/link';
+import Link from "next/link";
 
-export default function BlogPostCard({ post }) {
+export default function BlogPostCard({ blog }) {
   return (
     <div className="bg-white shadow rounded-lg">
       {/* thumbnail image */}
       <div className="p-4">
-        <h3>{post.title}</h3>
-        <p>{post.excerpt}</p>
-        <Link href={`/blog/${post.slug}`}>
+        <h3>{blog.blog_title}</h3>
+        <p>{blog.blog_content}</p>
+        <Link href={`/blog/${blog.blog_id}`}>
           <a className="text-accent hover:text-accentDark">Read More</a>
         </Link>
       </div>
