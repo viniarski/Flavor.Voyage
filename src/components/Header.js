@@ -12,13 +12,13 @@ export default function Header() {
       <nav>
         <ul className="flex gap-8 text-2xl ">
           <Link
-            href={'#'}
+            href={'/'}
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
           >
             Home
           </Link>
           <Link
-            href={'#'}
+            href={'/recipes'}
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
           >
             Recipes
