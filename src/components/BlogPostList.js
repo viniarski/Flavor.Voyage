@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
+import Image from "next/image";
 
 export default function BlogPostList() {
   const [blogs, setBlogs] = useState([]);
@@ -26,8 +27,14 @@ export default function BlogPostList() {
   return (
     <>
       {blogs.map((blog) => (
-        <div key={blog.blog_id} className="bg-white shadow rounded-lg">
-          {/* thumbnail image */}
+        <div key={blog.blog_id} className="bg-white shadow rounded-lg flex m-6">
+          <Image
+            src={blog.imgurl}
+            alt="picture of delicious food"
+            width={200}
+            height={200}
+            className="mx-4"
+          />
           <div className="p-4">
             <h3 className="text-3xl font-bold mb-2">{blog.blog_title}</h3>
             <p className="text-xl mb-4">{blog.blog_content}</p>
