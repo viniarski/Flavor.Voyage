@@ -16,29 +16,27 @@ export default function Page() {
     
             const supabase = createClient(supabaseUrl, supabaseAnonKey);
     
-            const { data: recipes, error } = await supabase
+            const { data, error } = await supabase
                 .from('recipes')
                 .select('*');
 
-            if (error) {
-                console.error('Error fetching recipes:', error);
-            } else {
-                setRecipes(recipes);
-            }
+                console.log(data)
+            setRecipes(data)
         };
     
         fetchRecipes();
     }, []);
 
+    // console.log(recipes[0])
+
     return (
         <div className="min-h-full flex flex-col items-center">
             <PageHeader header={'Recipes'} description={'Browse through recipes available'} img={"url('/images/4.avif')"} />
             <div className="min-h-full">
-                <h1>gvhbjn</h1>
                 {recipes.map((recipe) => {
                     <div key={recipe.recipe_id} className="bg-gray-100 rounded-lg p-2 my-4">
                         <div className="grid grid-cols-2 gap-8">
-                            {/* <img src={recipe.imgurl} className="rounded-3xl" alt="Chickpea" width={300} /> */}
+                            <img src={recipe.imgurl} className="rounded-3xl" alt="Chickpea" width={300} />
                             <div>
                                 <h2 className="text-2xl font-bold">{recipe.recipe_title}</h2>
                                 <ul className="text-xs">
