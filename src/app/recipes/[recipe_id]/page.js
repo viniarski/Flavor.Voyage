@@ -12,6 +12,7 @@ export default function Page({params}) {
     // console.log(params)
 
     const [recipes, setRecipes] = useState([]);
+    const [username, setUsername] = useState([])
 
     useEffect(() => {
         const fetchRecipes = async () => {
@@ -22,14 +23,23 @@ export default function Page({params}) {
     
             const { data, error } = await supabase
                 .from('recipes')
-                .select('*')
+                .select(`
+                    id,
+                    recipe_title,
+                    users(username),
+                    recipe_ingredients,
+                    cooking_instructions,
+                    serving_size,
+                    preparation_time,
+                    categories(category_name),  
+                    date_created,
+                    imgurl
+                `)
                 .eq('recipe_id', `${params.recipe_id}`);
 
             // console.log(data[0])
             setRecipes(data[0])
         };
-    
-        fetchRecipes();
     }, []);
 
     // console.log(recipes)
@@ -54,11 +64,11 @@ export default function Page({params}) {
                         </div>
                         <div>
                             <h3 className="text-lg font-bold mb-2 text-accent">Ingredients:</h3>
-                            {recipes.recipe_ingredients.map((ingredient, i) => (
+                            {/* {recipes.recipe_ingredients.map((ingredient, i) => (
                                 <li key={i} className="text-gray-700">
                                 {ingredient}
                                 </li>
-                            ))}
+                            ))} */}
                         </div>
                     </div>
                 </div>
