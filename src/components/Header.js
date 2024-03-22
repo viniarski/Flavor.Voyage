@@ -1,13 +1,12 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import logo from '../../public/logo.png';
-import { UserButton } from '@clerk/nextjs';
-import { auth } from '@clerk/nextjs';
-import loginIcon from '../../public/icons/login.png';
+import Link from "next/link";
+import Image from "next/image";
+import logo from "../../public/logo.png";
+import { UserButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs";
+import loginIcon from "../../public/icons/login.png";
 
-export default function Header() {
+export default function Header({ username }) {
   const { userId } = auth();
-
   return (
     <header className="flex bg-white py-4 px-8 justify-between items-center">
       <Link href="/">
@@ -19,39 +18,42 @@ export default function Header() {
       <nav>
         <ul className="flex gap-8 text-2xl items-center">
           <Link
-            href={'/'}
+            href={"/"}
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
           >
             Home
           </Link>
           <Link
-            href={'/recipes'}
+            href={"/recipes"}
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
           >
             Recipes
           </Link>
           <Link
-            href={'#'}
+            href={"#"}
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
           >
             About
           </Link>
           <Link
-            href={'/blog-posts'}
+            href={"/blog-posts"}
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
           >
             Blog
           </Link>
           <Link
-            href={'#'}
+            href={"#"}
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
           >
             Contact
           </Link>
           {userId ? (
-            <UserButton />
+            <UserButton
+              userProfileMode="navigation"
+              userProfileUrl={`/user-profile/${username}`}
+            />
           ) : (
-            <Link href={'/sign-in'}>
+            <Link href={"/sign-in"}>
               <Image
                 src={loginIcon}
                 height={24}
