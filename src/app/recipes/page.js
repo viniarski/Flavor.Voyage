@@ -16,12 +16,13 @@ export default function Page() {
 
       const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-      const { data, error } = await supabase.from("recipes").select("*");
+      const { data } = await supabase.from("recipes").select("*");
 
       setRecipes(data);
     };
-
+    
     fetchRecipes();
+    
   }, []);
 
   return (
