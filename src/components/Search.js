@@ -1,27 +1,16 @@
+// components/Search.js
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
+  const router = useRouter();
 
-  const handleSearch = async (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
-    console.log('Search query:', searchQuery);
-
-    try {
-      const response = await fetch(
-        `/api/search?query=${encodeURIComponent(searchQuery)}`
-      );
-      const data = await response.json();
-      console.log('Search results:', data);
-      setSearchResults(data);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-
-    // Reset the search query
+    router.push(`/search?query=${encodeURIComponent(searchQuery)}`);
     setSearchQuery('');
   };
 
