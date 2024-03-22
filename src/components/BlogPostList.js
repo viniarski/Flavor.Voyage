@@ -22,8 +22,6 @@ export default function BlogPostList() {
     fetchBlogPosts();
   }, []);
 
-  console.log(blogs);
-
   return (
     <>
       {blogs.map((blog) => (
@@ -38,7 +36,7 @@ export default function BlogPostList() {
           <div className="p-4">
             <h3 className="text-3xl font-bold mb-2">{blog.blog_title}</h3>
             <p className="text-xl mb-4">{blog.blog_content}</p>
-            <Link href={`/blog/${blog.blog_id}`}>
+            <Link href={`/blog-posts/${blog.blog_id}`}>
               <span className="text-accent hover:text-accentDark">
                 Read More
               </span>

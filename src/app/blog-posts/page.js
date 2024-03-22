@@ -1,7 +1,7 @@
 import BlogPostList from "@/components/BlogPostList";
 import PageHeader from "@/components/pageHeader";
 
-export default async function BlogPostsPage() {
+export default async function BlogPostsPage({ searchParams }) {
   return (
     <div>
       <PageHeader
