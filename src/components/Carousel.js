@@ -108,7 +108,7 @@ const CarouselComponent = () => {
                         Description:
                       </h4>
                       {slide.cooking_instructions
-                        .split('\n')
+                        .split()
                         .map((instruction, i) => (
                           <p key={i} className="text-gray-700 mb-2">
                             {instruction}
