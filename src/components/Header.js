@@ -51,6 +51,7 @@ export default function Header({ username }) {
             <UserButton
               userProfileMode="navigation"
               userProfileUrl={`/user-profile/${username}`}
+              afterSignOutUrl="/"
             />
           ) : (
             <Link href={"/sign-in"}>

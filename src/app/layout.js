@@ -14,7 +14,7 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const user = await currentUser();
-  const username = user.username;
+  const username = user?.username;
   return (
     <ClerkProvider>
       <html lang="en">
