@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import PageHeader from "@/components/pageHeader";
-import CreateRecipeButton from "@/components/createPost";
+import CreateButton from "@/components/createPost";
 
 export default function Page() {
   const [recipes, setRecipes] = useState([]);
@@ -31,7 +31,7 @@ export default function Page() {
         description={"Browse through recipes available"}
         img={"url('/images/4.avif')"}
       />
-      <CreateRecipeButton />
+      <CreateButton redirect="/recipes/new-recipe" buttonText="Create Recipe" />
       <div className="min-h-full grid grid-cols-2">
         {recipes.map((recipe) => (
           <div
