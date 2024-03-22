@@ -23,16 +23,7 @@ const CreateRecipeForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log({
-      recipeTitle,
-      userId,
-      recipeIngredients,
-      cookingInstructions,
-      servingSize,
-      preparationTime,
-      category,
-      imgUrl,
-    });
+
     await supabase.from("recipes").insert({
       recipe_title: recipeTitle,
       user_id: userId,

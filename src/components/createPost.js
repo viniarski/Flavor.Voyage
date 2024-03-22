@@ -3,7 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import { useUser } from "@clerk/clerk-react";
 import { useRouter } from "next/navigation";
 
-const CreateRecipeButton = () => {
+const CreateButton = ({ redirect, buttonText }) => {
   const { user } = useUser();
   const router = useRouter();
 
@@ -31,7 +31,7 @@ const CreateRecipeButton = () => {
       username: username,
     });
     console.log(user);
-    router.push("/recipes/new-recipe");
+    router.push(`${redirect}`);
   };
 
   return (
@@ -41,11 +41,11 @@ const CreateRecipeButton = () => {
           type="submit"
           className="bg-accent text-lg text-white px-4 py-2 rounded-md"
         >
-          Create Recipe
+          {buttonText}
         </button>
       </form>
     </div>
   );
 };
 
-export default CreateRecipeButton;
+export default CreateButton;
