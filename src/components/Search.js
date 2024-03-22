@@ -1,20 +1,22 @@
+// components/Search.js
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log('Search query:', searchQuery);
-    // Reset the search query
+    router.push(`/search?query=${encodeURIComponent(searchQuery)}`);
     setSearchQuery('');
   };
 
   return (
     <div
-      className="relative bg-cover bg-center py-16"
+      className="relative bg-cover bg-center py-12 h-[30vh]"
       style={{ backgroundImage: "url('/images/4.avif')" }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>

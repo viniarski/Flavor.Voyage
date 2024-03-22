@@ -47,7 +47,7 @@ const CarouselComponent = () => {
   };
 
   return (
-    <div className="relative h-[55vh]">
+    <div className="relative h-[58vh]">
       {slides.length > 0 ? (
         <>
           <div
@@ -56,7 +56,7 @@ const CarouselComponent = () => {
           >
             {slides.map((slide, index) => (
               <div
-                key={slide.id}
+                key={index}
                 className="flex-shrink-0 w-full flex items-center justify-center"
               >
                 <div className="w-[47vh] h-[47vh] rounded-lg overflow-hidden">
@@ -107,22 +107,32 @@ const CarouselComponent = () => {
                       <h4 className="text-lg font-bold mb-2 text-accent">
                         Description:
                       </h4>
-                      <p className="text-gray-700">
-                        {slide.cooking_instructions}
-                      </p>
+                      {slide.cooking_instructions
+                        .split()
+                        .map((instruction, i) => (
+                          <p key={i} className="text-gray-700 mb-2">
+                            {instruction}
+                          </p>
+                        ))}
                     </div>
                   ) : (
                     <div className="mt-4">
                       <h4 className="text-lg font-bold mb-2 text-accent">
                         Ingredients:
                       </h4>
-                      <ul className="list-disc list-inside">
+                      <div
+                        className={`grid ${
+                          slide.recipe_ingredients.length > 6
+                            ? 'grid-cols-2'
+                            : 'grid-cols-1'
+                        } gap-2`}
+                      >
                         {slide.recipe_ingredients.map((ingredient, i) => (
-                          <li key={i} className="text-gray-700">
+                          <p key={i} className="text-gray-700">
                             {ingredient}
-                          </li>
+                          </p>
                         ))}
-                      </ul>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -141,7 +151,7 @@ const CarouselComponent = () => {
           >
             <img src="/icons/next.png" alt="Next" className="w-6 h-6" />
           </button>
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-2">
             {slides.map((_, index) => (
               <button
                 key={index}
