@@ -25,8 +25,6 @@ export default function DynamicBlogPostPage({ params }) {
     fetchBlogPost();
   }, []);
 
-  console.log(blog);
-
   return (
     <>
       <PageHeader
@@ -39,10 +37,15 @@ export default function DynamicBlogPostPage({ params }) {
           src={blog.imgurl}
           alt="picture of delicious food"
           width={400}
-          height={400}
-          className="m-4"
+          height={350}
+          className="m-4 max-h-[350px]"
         />
-        <p className="text-xl m-4">{blog.blog_content}</p>
+        <div>
+          <p className="italic m-4">
+            {`Created: ${blog.date_created}`.slice(0, 19)}
+          </p>
+          <p className="text-xl m-4 whitespace-pre-line">{blog.blog_content}</p>
+        </div>
       </div>
     </>
   );

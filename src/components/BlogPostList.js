@@ -25,7 +25,10 @@ export default function BlogPostList() {
   return (
     <>
       {blogs.map((blog) => (
-        <div key={blog.blog_id} className="bg-white shadow rounded-lg flex m-6">
+        <div
+          key={blog.blog_id}
+          className="bg-white shadow rounded-lg flex m-6 h-[200px]"
+        >
           <Image
             src={blog.imgurl}
             alt="picture of delicious food"
@@ -35,7 +38,9 @@ export default function BlogPostList() {
           />
           <div className="p-4">
             <h3 className="text-3xl font-bold mb-2">{blog.blog_title}</h3>
-            <p className="text-xl mb-4">{blog.blog_content}</p>
+            <p className="text-xl mb-4 truncate whitespace-nowrap overflow-hidden w-[900px]">
+              {blog.blog_content}
+            </p>
             <Link href={`/blog-posts/${blog.blog_id}`}>
               <span className="text-accent hover:text-accentDark">
                 Read More
