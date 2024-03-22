@@ -16,19 +16,29 @@ const CarouselComponent = () => {
 
       const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-      const { data: recipes, error } = await supabase
+      const { data: allRecipes, error } = await supabase
         .from('recipes')
         .select('*');
 
       if (error) {
         console.error('Error fetching recipes:', error);
       } else {
-        setSlides(recipes);
+        const shuffledRecipes = shuffleArray(allRecipes);
+        const randomRecipes = shuffledRecipes.slice(0, 5);
+        setSlides(randomRecipes);
       }
     };
 
     fetchRecipes();
   }, []);
+
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
