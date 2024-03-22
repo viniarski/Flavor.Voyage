@@ -28,7 +28,8 @@ const SearchResults = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold mb-6">Search Results for "{query}"</h2>
+      <h2 className="text-3xl font-bold mb-6">{`Search Results for "${query}"`}</h2>
+
       {searchResults.length > 0 ? (
         <div className="space-y-6">
           {searchResults.map((recipe) => (
