@@ -6,13 +6,13 @@ import { useEffect, useState } from "react";
 import time from "../../../../public/icons/duration.png"
 import serving from "../../../../public/icons/serving_size.png"
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Page({params}) {
 
     // console.log(params)
 
     const [recipes, setRecipes] = useState([]);
-    const [username, setUsername] = useState([])
 
     useEffect(() => {
         const fetchRecipes = async () => {
@@ -21,25 +21,17 @@ export default function Page({params}) {
     
             const supabase = createClient(supabaseUrl, supabaseAnonKey);
     
-            const { data, error } = await supabase
+            const { data } = await supabase
                 .from('recipes')
-                .select(`
-                    id,
-                    recipe_title,
-                    users(username),
-                    recipe_ingredients,
-                    cooking_instructions,
-                    serving_size,
-                    preparation_time,
-                    categories(category_name),  
-                    date_created,
-                    imgurl
-                `)
+                .select("*, users(username), categories(category_name)")
                 .eq('recipe_id', `${params.recipe_id}`);
 
-            // console.log(data[0])
+            console.log(data[0])
             setRecipes(data[0])
+
         };
+
+        fetchRecipes()
     }, []);
 
     // console.log(recipes)
@@ -51,7 +43,7 @@ export default function Page({params}) {
                 <div className="grid grid-cols-2 p-16 gap-16">
                 <img src={recipes.imgurl} className="rounded-3xl" alt="Chickpea" width={400} />
                     <div>
-                        <h2 className="text-lg font-bold mb-2 text-accent">Category: {recipes.category}</h2>
+                        <h2 className="text-lg font-bold mb-2 text-accent">Category: <Link href={'#'} className="text-black font-normal hover:underline">{recipes.categories?.category_name}</Link></h2>
                         <div className="grid grid-cols-2 max-h-8 my-2">
                             <div className="flex gap-2">
                                 <Image src={time} alt="duration" width={25} height={10} />
@@ -64,11 +56,11 @@ export default function Page({params}) {
                         </div>
                         <div>
                             <h3 className="text-lg font-bold mb-2 text-accent">Ingredients:</h3>
-                            {/* {recipes.recipe_ingredients.map((ingredient, i) => (
+                            {recipes?.recipe_ingredients.map((ingredient, i) => (
                                 <li key={i} className="text-gray-700">
                                 {ingredient}
                                 </li>
-                            ))} */}
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -77,8 +69,8 @@ export default function Page({params}) {
                     <p className="text-lg">{recipes.cooking_instructions}</p>
                 </div>
                 <div className="my-4">
-                    <p>Uploaded: {recipes.date_created}</p>
-                    <p>By: {recipes.user_id}</p>
+                    <p className="text-lg font-bold mb-2 text-accent">Uploaded: <span className="text-black font-normal">{recipes.date_created}</span></p>
+                    <p className="text-lg font-bold mb-2 text-accent">By: <Link href={'#'} className="text-black font-normal hover:underline">{recipes.users?.username}</Link></p>
                 </div>
             </div>
             

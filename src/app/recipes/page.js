@@ -27,7 +27,7 @@ export default function Page() {
         fetchRecipes();
     }, []);
 
-    console.log(recipes)
+    // console.log(recipes)
 
     return (
         <div className="min-h-full flex flex-col items-center">
