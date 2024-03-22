@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const CarouselComponent = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -117,32 +118,56 @@ const CarouselComponent = () => {
                       <h4 className="text-lg font-bold mb-2 text-accent">
                         Description:
                       </h4>
-                      {slide.cooking_instructions
-                        .split()
-                        .map((instruction, i) => (
-                          <p key={i} className="text-gray-700 mb-2">
-                            {instruction}
+                      {slide.cooking_instructions.length > 470 ? (
+                        <>
+                          <p className="text-gray-700 mb-2">
+                            {slide.cooking_instructions.slice(0, 470)}...
                           </p>
-                        ))}
+                          <Link
+                            href={`/recipes/${slide.recipe_id}`}
+                            className="text-accent font-bold"
+                          >
+                            Read More
+                          </Link>
+                        </>
+                      ) : (
+                        <p className="text-gray-700 mb-2">
+                          {slide.cooking_instructions}
+                        </p>
+                      )}
                     </div>
                   ) : (
                     <div className="mt-4">
                       <h4 className="text-lg font-bold mb-2 text-accent">
                         Ingredients:
                       </h4>
-                      <div
-                        className={`grid ${
-                          slide.recipe_ingredients.length > 6
-                            ? 'grid-cols-2'
-                            : 'grid-cols-1'
-                        } gap-2`}
-                      >
-                        {slide.recipe_ingredients.map((ingredient, i) => (
-                          <p key={i} className="text-gray-700">
-                            {ingredient}
+                      {slide.recipe_ingredients.length > 470 ? (
+                        <>
+                          <p className="text-gray-700 mb-2">
+                            {slide.recipe_ingredients.slice(0, 470)}...
                           </p>
-                        ))}
-                      </div>
+                          <Link
+                            href={`/recipes/${slide.recipe_id}`}
+                            className="text-accent font-bold"
+                          >
+                            Read More
+                          </Link>
+                        </>
+                      ) : (
+                        <div
+                          className={`grid ${
+                            slide.recipe_ingredients.length > 6
+                              ? 'grid-cols-2'
+                              : 'grid-cols-1'
+                          } gap-2`}
+                        >
+                          {slide.recipe_ingredients.map((ingredient, i) => (
+                            <p key={i} className="text-gray-700">
+                              {ingredient}
+                            </p>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
