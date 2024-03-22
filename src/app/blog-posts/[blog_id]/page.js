@@ -31,7 +31,7 @@ export default function DynamicBlogPostPage({ params }) {
     <>
       <PageHeader
         header={blog.blog_title}
-        description={"Will be blog.users.username when I can get it to work"}
+        description={`By ${blog.users?.username}`}
         img={"url('/images/4.avif')"}
       />
       <div className="flex m-4">
