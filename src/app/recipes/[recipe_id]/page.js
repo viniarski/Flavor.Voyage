@@ -5,6 +5,7 @@ import { createClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import time from "../../../../public/icons/duration.png"
 import serving from "../../../../public/icons/serving_size.png"
+import Ratings from "@/components/ratings";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -40,9 +41,10 @@ export default function Page({params}) {
         <div className="min-h-full flex flex-col items-center">
             <PageHeader header={`${recipes.recipe_title}`} description={`How to prepare and cook ${recipes.recipe_title}`} img={"url('/images/4.avif')"} />
             <div className="py-4 flex flex-col items-center">
-                <div className="grid grid-cols-2 p-16 gap-16">
+                <div className="grid grid-cols-2 pt-16 gap-16">
                 <img src={recipes.imgurl} className="rounded-3xl" alt="Chickpea" width={400} />
                     <div>
+                    
                         <h2 className="text-lg font-bold mb-2 text-accent">Category: <Link href={'#'} className="text-black font-normal hover:underline">{recipes.categories?.category_name}</Link></h2>
                         <div className="grid grid-cols-2 max-h-8 my-2">
                             <div className="flex gap-2">
@@ -56,7 +58,7 @@ export default function Page({params}) {
                         </div>
                         <div>
                             <h3 className="text-lg font-bold mb-2 text-accent">Ingredients:</h3>
-                            {recipes?.recipe_ingredients.map((ingredient, i) => (
+                            {recipes.recipe_ingredients.map((ingredient, i) => (
                                 <li key={i} className="text-gray-700">
                                 {ingredient}
                                 </li>
@@ -64,16 +66,19 @@ export default function Page({params}) {
                         </div>
                     </div>
                 </div>
+                <div className="my-4 flex gap-4">
+                        <p className="text-lg font-bold mb-2 text-accent">Uploaded: <span className="text-black font-normal">{recipes.date_created}</span></p>
+                        <p className="text-lg font-bold mb-2 text-accent">By: <Link href={'#'} className="text-black font-normal hover:underline">{recipes.users?.username}</Link></p>
+                    </div>
                 <div className="max-w-[850px]">
                     <h3 className="text-lg font-bold mb-2 text-accent">Cooking Instruction:</h3>
                     <p className="text-lg">{recipes.cooking_instructions}</p>
                 </div>
-                <div className="my-4">
-                    <p className="text-lg font-bold mb-2 text-accent">Uploaded: <span className="text-black font-normal">{recipes.date_created}</span></p>
-                    <p className="text-lg font-bold mb-2 text-accent">By: <Link href={'#'} className="text-black font-normal hover:underline">{recipes.users?.username}</Link></p>
-                </div>
             </div>
-            
+            <div className="mb-4 flex flex-col items-center gap-4">
+                <p>Leave a rating</p>
+                <Ratings />
+            </div>
         </div>
     )
 }
