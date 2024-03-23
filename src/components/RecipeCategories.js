@@ -34,7 +34,61 @@ export default function RecipeCategories() {
                 {category === 'Vegetarian' && (
                   <Image
                     src="/images/8.avif"
-                    alt="Vege"
+                    alt="Vegetarian"
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-full"
+                  />
+                )}
+                {category === 'Dinner' && (
+                  <Image
+                    src="/images/10.avif"
+                    alt="Dinner"
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-full"
+                  />
+                )}
+                {category === 'Vegan' && (
+                  <Image
+                    src="/images/9.avif"
+                    alt="Vegen"
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-full"
+                  />
+                )}
+                {category === 'Snacks' && (
+                  <Image
+                    src="/images/11.avif"
+                    alt="Snacks"
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-full"
+                  />
+                )}
+                {category === 'Gluten-free' && (
+                  <Image
+                    src="/images/12.avif"
+                    alt="Gluten Free"
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-full"
+                  />
+                )}
+                {category === 'Breakfast' && (
+                  <Image
+                    src="/images/14.avif"
+                    alt="Snacks"
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-full"
+                  />
+                )}
+                {category === 'Lunch' && (
+                  <Image
+                    src="/images/13.avif"
+                    alt="Gluten Free"
                     layout="fill"
                     objectFit="cover"
                     className="rounded-full"

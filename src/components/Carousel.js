@@ -58,7 +58,7 @@ const CarouselComponent = () => {
   };
 
   return (
-    <div className="relative h-[58vh]">
+    <div className="relative h-[58vh] overflow-hidden">
       {slides.length > 0 ? (
         <>
           <div
