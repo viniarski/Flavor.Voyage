@@ -21,7 +21,7 @@ export default function RecipeCategories() {
         {categories.map((category) => (
           <Link key={category} href={`/recipes?category=${category}`}>
             <div className="flex flex-col items-center">
-              <div className="bg-white rounded-full h-32 w-32 flex items-center justify-center shadow relative overflow-hidden">
+              <div className="bg-white rounded-full h-32 w-32 flex items-center justify-center shadow relative overflow-hidden transition duration-300 ease-in-out transform hover:scale-105">
                 {category === 'Desserts' && (
                   <Image
                     src="/images/6.avif"
