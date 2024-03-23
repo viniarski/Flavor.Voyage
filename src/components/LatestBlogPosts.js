@@ -39,17 +39,20 @@ export default function LatestBlogPosts() {
     <div className="space-y-8">
       {blogs.map((blog) => (
         <div key={blog.blog_id} className="flex bg-white shadow rounded-lg p-4">
-          <Image
-            src={blog.imgurl}
-            alt="picture of delicious food"
-            width={100}
-            height={100}
-            className="rounded-lg"
-          />
+          <div className="w-40 h-40 rounded-lg overflow-hidden flex-shrink-0">
+            <Image
+              src={blog.imgurl}
+              alt="picture of delicious food"
+              width={200}
+              height={200}
+              objectFit="cover"
+              className="w-full h-full"
+            />
+          </div>
           <div className="ml-4">
             <h3 className="text-xl font-bold mb-2">{blog.blog_title}</h3>
             <p className="text-base mb-2">
-              {truncateDescription(blog.blog_content, 100)}
+              {truncateDescription(blog.blog_content, 170)}
             </p>
             <Link href={`/blog-posts/${blog.blog_id}`}>
               <span className="text-accent hover:text-accentDark">
