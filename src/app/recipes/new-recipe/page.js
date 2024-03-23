@@ -132,11 +132,14 @@ const CreateRecipeForm = () => {
               onChange={(e) => setCategory(e.target.value)}
               className="block w-full mt-1 p-2 border rounded-md"
             >
-              <option value="1">Main Course</option>
-              <option value="2">Salad</option>
-              <option value="3">Appetizer</option>
-              <option value="4">Breakfast</option>
-              <option value="5">Dessert</option>
+              <option value="1">Breakfast</option>
+              <option value="2">Lunch</option>
+              <option value="3">Dinner</option>
+              <option value="4">Snacks</option>
+              <option value="5">Desserts</option>
+              <option value="6">Vegetarian</option>
+              <option value="7">Vegan</option>
+              <option value="8">Gluten-free</option>
             </select>
           </label>
 
