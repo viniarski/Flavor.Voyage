@@ -1,4 +1,19 @@
-# Flavor Voyage
+ ,gggggggggggggg                                                           ,ggg,         ,gg                                                       
+dP""""""88"""""" ,dPYb,                                                   dP""Y8a       ,8P                                                        
+Yb,_    88       IP'`Yb                                                   Yb, `88       d8'                                                        
+ `""    88       I8  8I                                                    `"  88       88                                                         
+     ggg88gggg   I8  8'                                                        88       88                                                         
+        88   8   I8 dP    ,ggggg,       ggg    gg     ,ggggg,     ,gggggg,     I8       8I   ,ggggg,    gg     gg    ,gggg,gg    ,gggg,gg   ,ggg,  
+        88       I8dP    dP"  "Y8ggg   d8"Yb   88bg  dP"  "Y8ggg  dP""""8I     `8,     ,8'  dP"  "Y8ggg I8     8I   dP"  "Y8I   dP"  "Y8I  i8" "8i 
+  gg,   88       I8P    i8'    ,8I    dP  I8   8I   i8'    ,8I   ,8'    8I      Y8,   ,8P  i8'    ,8I   I8,   ,8I  i8'    ,8I  i8'    ,8I  I8, ,8I 
+   "Yb,,8P      ,d8b,_ ,d8,   ,d8'  ,dP   I8, ,8I  ,d8,   ,d8'  ,dP     Y8, d8b  Yb,_,dP  ,d8,   ,d8'  ,d8b, ,d8I ,d8,   ,d8b,,d8,   ,d8I  `YbadP' 
+     "Y8P'      8P'"Y88P"Y8888P"    8"     "Y8P"   P"Y8888P"    8P      `Y8 Y8P   "Y8P"   P"Y8888P"    P""Y88P"888P"Y8888P"`Y8P"Y8888P"888888P"Y888
+                                                                                                             ,d8I'                   ,d8I'         
+                                                                                                           ,dP'8I                  ,dP'8I          
+                                                                                                          ,8"  8I                 ,8"  8I          
+                                                                                                          I8   8I                 I8   8I          
+                                                                                                          `8, ,8I                 `8, ,8I          
+                                                                                                           `Y8P"                   `Y8P"           
 
 Flavor Voyage is a web application that allows users to explore and discover a wide variety of recipes. It provides a platform for users to browse recipes, create their own recipes, and read blog posts related to cooking and food.
 
