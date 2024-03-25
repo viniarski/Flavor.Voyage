@@ -6,14 +6,22 @@ import { UserProfile } from "@clerk/nextjs";
 
 import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
+import PageHeader from "@/components/pageHeader";
 
 const ProfilePage = () => {
   const [userProfile, setUserProfile] = useState(null);
   const [blogs, setBlogs] = useState(null);
   const [recipes, setRecipes] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [bio, setBio] = useState("");
+  const [coverPic, setCoverPic] = useState("");
+  const [showForm, setShowForm] = useState(false);
+  const [userData, setUserData] = useState(null);
 
   const { user, isLoaded } = useUser();
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
   useEffect(() => {
     if (!isLoaded || !user) {
@@ -21,10 +29,6 @@ const ProfilePage = () => {
     }
 
     const fetchData = async () => {
-      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-      const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-      const supabase = createClient(supabaseUrl, supabaseAnonKey);
-
       const fetchBlogs = async () => {
         const { data, error } = await supabase
           .from("blogs")
@@ -40,15 +44,26 @@ const ProfilePage = () => {
           .eq("user_id", user.id);
         return data || [];
       };
+      const fetchUserData = async () => {
+        const { data, error } = await supabase
+          .from("users")
+          .select("cover_pic, bio")
+          .eq("user_id", user.id);
+        return data || [];
+      };
 
       const userProfileData = " user profile data ";
       const fetchedBlogs = await fetchBlogs();
       const fetchedRecipes = await fetchRecipes();
+      const fetchedUserData = await fetchUserData();
 
       setUserProfile(userProfileData);
       setBlogs(fetchedBlogs);
       setRecipes(fetchedRecipes);
       setIsLoading(false);
+      setUserData(fetchedUserData);
+      setBio(fetchedUserData[0]?.bio);
+      setCoverPic(fetchedUserData[0]?.cover_pic);
     };
 
     fetchData();
@@ -61,15 +76,72 @@ const ProfilePage = () => {
   let username = user?.username;
   let profilePic = user?.imageUrl;
 
+  const handleFormToggle = () => {
+    setShowForm(!showForm);
+  };
+
+  const saveEditProfile = async () => {
+    await supabase
+      .from("users")
+      .update({
+        cover_pic: coverPic,
+        bio: bio,
+      })
+      .eq("user_id", user.id);
+
+    const { data, error } = await supabase
+      .from("users")
+      .select("cover_pic, bio")
+      .eq("user_id", user.id);
+    setUserData(data || []);
+
+    handleFormToggle();
+  };
+
   return (
     <div className="bg-gray-200 min-h-screen">
+      <PageHeader
+        header={`${username}'s Page`}
+        description={userData[0].bio}
+        img={`url(${userData[0].cover_pic})`}
+      />
+
       <div className="text-center py-12">
         <img
           src={profilePic}
           className="rounded-full w-32 h-32 object-cover mx-auto"
           alt="Profile"
         />
-        <h1 className="text-2xl mt-4">{username}&#39;s Page</h1>
+        <button
+          onClick={handleFormToggle}
+          className="mt-4 bg-accent text-white px-4 py-2 rounded-md hover:bg-accentDark"
+        >
+          Edit Profile
+        </button>
+        {showForm && (
+          <div className="mt-4">
+            <input
+              type="text"
+              placeholder="Enter your bio"
+              value={bio}
+              onChange={(e) => setBio(e.target.value)}
+              className="w-full p-2 rounded-md border"
+            />
+            <input
+              type="text"
+              placeholder="Enter cover picture URL"
+              value={coverPic}
+              onChange={(e) => setCoverPic(e.target.value)}
+              className="w-full mt-2 p-2 rounded-md border"
+            />
+            <button
+              onClick={saveEditProfile}
+              className="mt-2 bg-accent text-white px-4 py-2 rounded-md hover:bg-accentDark"
+            >
+              Save
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="container mx-auto px-4">
