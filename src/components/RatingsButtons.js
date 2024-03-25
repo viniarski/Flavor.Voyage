@@ -6,7 +6,7 @@ import { useUser } from "@clerk/nextjs"
 export default function RatingButtons({recipe_id, supabase}) {
 
     const user = useUser()
-    console.log(supabase)
+    // console.log(user)
 
     const [rate, setRate] = useState(0)
 
@@ -14,13 +14,12 @@ export default function RatingButtons({recipe_id, supabase}) {
         e.preventDefault()
         // console.log(rate)
 
-        // if (user.isSignedIn) {
-            // console.log(user.user.id, recipe_id.recipe_id, rate)
-            await supabase.from("ratings").insert({
-                user_id: user.user.id,
-                recipe_id: recipe_id.recipe_id,
-                vote: rate,
-            });
+        const data = await supabase.from("ratings").insert({
+            user_id: user.user.id,
+            recipe_id: recipe_id,
+            vote: rate,
+        });
+        console.log(data)
     }
 
     return (
