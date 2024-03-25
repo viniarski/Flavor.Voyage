@@ -30,7 +30,6 @@ const CreateButton = ({ redirect, buttonText }) => {
       profilepic: profilepic,
       username: username,
     });
-    console.log(user);
     router.push(`${redirect}`);
   };
 
@@ -39,7 +38,7 @@ const CreateButton = ({ redirect, buttonText }) => {
       <form onSubmit={setUserDetails}>
         <button
           type="submit"
-          className="bg-accent text-lg text-white px-4 py-2 rounded-md"
+          className="bg-accent text-lg text-white px-4 py-2 rounded-md hover:scale-105 active:scale-100 transition transform duration-200 ease-in-out"
         >
           {buttonText}
         </button>

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import PageHeader from "@/components/pageHeader";
 import Image from "next/image";
+import BlogCommentsSection from "@/components/BlogComments";
 
 export default function DynamicBlogPostPage({ params }) {
   const [blog, setBlog] = useState([]);
@@ -41,12 +42,14 @@ export default function DynamicBlogPostPage({ params }) {
           className="m-4 max-h-[350px]"
         />
         <div>
-          <p className="italic m-4">
-            {`Created: ${blog.date_created}`.slice(0, 19)}
+          <p>
+            <span className="text-lg font-bold text-accent m-4">Created:</span>
+            {`${blog.date_created}`.slice(0, 10)}
           </p>
           <p className="text-xl m-4 whitespace-pre-line">{blog.blog_content}</p>
         </div>
       </div>
+      <BlogCommentsSection params={params} />
     </>
   );
 }

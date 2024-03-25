@@ -1,4 +1,5 @@
-'use client'
+// src/app/recipes/[recipe_id]/page.js
+'use client';
 
 import PageHeader from "@/components/pageHeader"
 import { createClient } from "@supabase/supabase-js";
@@ -11,8 +12,8 @@ import { revalidatePath } from "next/cache";
 import RatingButtons from "@/components/RatingsButtons";
 import { useUser } from "@clerk/nextjs";
 
-export default function Page({params}) {
-
+export default function Page({ params }) {
+  
     const [recipes, setRecipes] = useState([]);
     const [ratings, setRatings] = useState([])
     
@@ -93,6 +94,6 @@ export default function Page({params}) {
                     ratings={ratings.data}
                 />
             </div>
-        </div>
-    )
+      </div>
+  );
 }
