@@ -1,16 +1,32 @@
+// components/RecipeCard.js
+import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
-export default function RecipeCard({ recipe }) {
+const RecipeCard = ({ recipe }) => {
   return (
-    <div className="bg-white shadow rounded-lg">
-      {/* thumbnail image */}
+    <div className="bg-white shadow-md rounded-lg overflow-hidden">
+      <div className="relative h-48">
+        <Image
+          src={recipe.imgurl}
+          alt={recipe.recipe_title}
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
       <div className="p-4">
-        <h3>{recipe.title}</h3>
-        <p>{recipe.description}</p>
-        <Link href={`/recipes/${recipe.slug}`}>
-          <a className="text-accent hover:text-accentDark">Read More</a>
+        <h2 className="text-xl font-bold mb-2">{recipe.recipe_title}</h2>
+        <p className="text-gray-600 mb-4">
+          Preparation Time: {recipe.preparation_time} minutes
+        </p>
+        <Link href={`/recipes/${recipe.recipe_id}`}>
+          <a className="bg-accent text-white px-4 py-2 rounded-md">
+            View Recipe
+          </a>
         </Link>
       </div>
     </div>
   );
-}
+};
+
+export default RecipeCard;
