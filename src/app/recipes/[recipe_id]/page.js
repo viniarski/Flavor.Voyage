@@ -9,10 +9,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { revalidatePath } from "next/cache";
 import RatingButtons from "@/components/RatingsButtons";
+import { useUser } from "@clerk/nextjs";
 
 export default function Page({params}) {
 
     const [recipes, setRecipes] = useState([]);
+    const [ratings, setRatings] = useState([])
+    
+
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
         
@@ -26,13 +30,20 @@ export default function Page({params}) {
                 .from('recipes')
                 .select("*, users(username), categories(category_name)")
                 .eq('recipe_id', `${params.recipe_id}`);
-
-            // console.log(data[0])
             setRecipes(data[0])
-
         };
-
+        const fetchRatings = async () => {
+            const data = await supabase
+            .from("ratings")
+            .select('*')
+            // .eq('user_id', `${user?.id}`)
+            // console.log(data)
+            setRatings(data)
+        };
+    
+        fetchRatings()
         fetchRecipes()
+        
     }, []);
 
     return (
@@ -40,7 +51,7 @@ export default function Page({params}) {
             <PageHeader header={`${recipes.recipe_title}`} description={`How to prepare and cook ${recipes.recipe_title}`} img={"url('/images/4.avif')"} />
             <div className="py-4 flex flex-col items-center gap-8">
                 <div className="grid grid-cols-2 pt-16 gap-16">
-                <img src={recipes.imgurl} className="rounded-3xl" alt="Chickpea" width={400} />
+                <Image src={recipes?.imgurl} className="rounded-3xl" alt="Chickpea" width={400} height={100} />
                     <div>
                         <div className="flex gap-4">
                             <p className="text-md font-bold mb-2 text-accent">Uploaded: <span className="text-black font-normal">{recipes.date_created}</span></p>
@@ -79,6 +90,7 @@ export default function Page({params}) {
                 <RatingButtons 
                     recipe_id={recipes.recipe_id}
                     supabase={supabase}
+                    ratings={ratings.data}
                 />
             </div>
         </div>

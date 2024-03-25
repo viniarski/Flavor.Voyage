@@ -1,25 +1,48 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useUser } from "@clerk/nextjs"
 
-export default function RatingButtons({recipe_id, supabase}) {
+export default function RatingButtons({recipe_id, supabase, ratings}) {
 
-    const user = useUser()
-    // console.log(user)
+    const {user} = useUser()
+    // console.log(ratings)
 
     const [rate, setRate] = useState(0)
 
     const handleRating = async (e) => {
-        e.preventDefault()
-        // console.log(rate)
 
-        const data = await supabase.from("ratings").insert({
-            user_id: user.user.id,
+        e.preventDefault()
+        // console.log(hasRate, rate)
+
+        const userRating = ratings.filter(item => item.user_id === user.id)
+        const existingRating = userRating[0]
+        console.log(existingRating, rate)
+
+        
+        if (existingRating.rating == rate) {
+            // CHECKING IF RATING  VALUTE IS THE SAME
+            console.log('SAME RATING')
+        
+        } else if (existingRating != rate) {
+            // CHECKING IF RATING VALUE IS DIFFERENT
+            console.log('UPDATING')
+            const data = await supabase
+            .from('ratings')
+            .update({rating: rate})
+            .eq('id', `${existingRating.id}`)
+            console.log(data)
+
+        } else {
+            // IF NONE OF THE ABOVE CREATE NEW RATING
+            const data = await supabase.from("ratings").insert({
+            user_id: user.id,
             recipe_id: recipe_id,
-            vote: rate,
+            rating: rate,
         });
         console.log(data)
+        }
+        
     }
 
     return (
