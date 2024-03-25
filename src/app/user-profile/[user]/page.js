@@ -103,7 +103,9 @@ const ProfilePage = () => {
       <PageHeader
         header={`${username}'s Page`}
         description={userData[0].bio}
-        img={`url(${userData[0].cover_pic})`}
+        img={`url(${
+          userData[0]?.cover_pic ? userData[0].cover_pic : "/images/4.avif"
+        })`}
       />
 
       <div className="text-center py-12">
