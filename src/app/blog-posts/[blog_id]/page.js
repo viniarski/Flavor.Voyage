@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import PageHeader from "@/components/pageHeader";
 import Image from "next/image";
-import CommentsSection from "@/components/BlogComments";
+import BlogCommentsSection from "@/components/BlogComments";
 
 export default function DynamicBlogPostPage({ params }) {
   const [blog, setBlog] = useState([]);
@@ -49,7 +49,7 @@ export default function DynamicBlogPostPage({ params }) {
           <p className="text-xl m-4 whitespace-pre-line">{blog.blog_content}</p>
         </div>
       </div>
-      <CommentsSection params={params} />
+      <BlogCommentsSection params={params} />
     </>
   );
 }

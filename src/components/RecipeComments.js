@@ -3,12 +3,12 @@ import { createClient } from "@supabase/supabase-js";
 import { useState, useEffect } from "react";
 import { useUser } from "@clerk/clerk-react";
 
-export default function BlogCommentsSection({ params }) {
-  const [blogComment, setBlogComment] = useState("");
-  const [displayBlogComments, setDisplayBlogComments] = useState([]);
+export default function RecipeCommentsSection({ params }) {
+  const [recipeComment, setRecipeComment] = useState("");
+  const [displayRecipeComments, setDisplayRecipeComments] = useState([]);
 
   useEffect(() => {
-    fetchBlogComments();
+    fetchRecipeComments();
   }, []);
 
   const { user } = useUser();
@@ -19,24 +19,24 @@ export default function BlogCommentsSection({ params }) {
 
   const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-  async function fetchBlogComments() {
+  async function fetchRecipeComments() {
     const { data } = await supabase
-      .from("blog_comments")
+      .from("recipe_comments")
       .select("*, users (user_id, username)")
-      .eq("blog_id", `${params.blog_id}`);
+      .eq("recipe_id", `${params.recipe_id}`);
 
-    setDisplayBlogComments(data);
+    setDisplayRecipeComments(data);
   }
 
   const handleSaveComment = async () => {
-    let response = await supabase.from("blog_comments").insert({
-      blog_comment: blogComment,
+    let response = await supabase.from("recipe_comments").insert({
+      recipe_comment: recipeComment,
       user_id: userId,
-      blog_id: `${params.blog_id}`,
+      recipe_id: `${params.recipe_id}`,
     });
 
     if (response.ok) {
-      fetchBlogComments();
+      fetchRecipeComments();
     } else {
       console.error("Failed to add comment", response.status);
     }
@@ -46,14 +46,14 @@ export default function BlogCommentsSection({ params }) {
     <>
       <form onSubmit={handleSaveComment} className="flex flex-col m-8">
         <label
-          htmlFor="blog_comment"
+          htmlFor="recipe_comment"
           className="mt-4 text-accent text-xl font-bold px-4 py-2"
         >
           Leave a comment:
         </label>
         <textarea
-          value={blogComment}
-          onChange={(event) => setBlogComment(event.target.value)}
+          value={recipeComment}
+          onChange={(event) => setRecipeComment(event.target.value)}
           placeholder="Any thoughts? Reviews? Share here!"
           className="px-4 py-2 rounded-md"
         />
@@ -65,21 +65,21 @@ export default function BlogCommentsSection({ params }) {
         </button>
       </form>
 
-      {displayBlogComments.map((blogComment) => (
+      {displayRecipeComments.map((recipeComment) => (
         <div
-          key={blogComment.blog_comment_id}
+          key={recipeComment.recipe_comment_id}
           className="bg-white shadow rounded-lg m-6 h-fit p-4"
         >
           <div className="flex justify-between p-2 ">
             <h3 className="text-xl font-bold text-accent">
-              {blogComment.users?.username}
+              {recipeComment.users?.username}
             </h3>
             <p className="text-gray-500 text-xs self-center">
-              {`${blogComment.date_created}`.slice(0, 10)}
+              {`${recipeComment.date_created}`.slice(0, 10)}
             </p>
           </div>
 
-          <p className="p-2 ">{blogComment.blog_comment}</p>
+          <p className="p-2 ">{recipeComment.recipe_comment}</p>
         </div>
       ))}
     </>
