@@ -52,12 +52,10 @@ const ProfilePage = () => {
         return data || [];
       };
 
-      const userProfileData = " user profile data ";
       const fetchedBlogs = await fetchBlogs();
       const fetchedRecipes = await fetchRecipes();
       const fetchedUserData = await fetchUserData();
 
-      setUserProfile(userProfileData);
       setBlogs(fetchedBlogs);
       setRecipes(fetchedRecipes);
       setIsLoading(false);
