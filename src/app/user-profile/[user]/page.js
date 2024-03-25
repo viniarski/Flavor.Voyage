@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import CreateButton from "@/components/createPost";
 import { useUser } from "@clerk/nextjs";
+import { UserProfile } from "@clerk/nextjs";
+
 import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
 
@@ -152,6 +154,9 @@ const ProfilePage = () => {
             </div>
           )}
         </div>
+      </div>
+      <div className="flex justify-center pb-16">
+        <UserProfile />
       </div>
     </div>
   );
