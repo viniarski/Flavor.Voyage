@@ -8,7 +8,7 @@ const ContactForm = async () => {
       <form
         action="https://formspree.io/f/xknldnpk"
         method="POST"
-        className="space-y-4 "
+        className="space-y-4"
       >
         <div className="hidden">
           <label
@@ -67,7 +67,7 @@ const ContactForm = async () => {
         <button
           type="submit"
           style={{ backgroundColor: "#EE6F57" }}
-          className="mt-4 w-full text-white p-2 rounded-md hover:bg-yellow-500"
+          className="mt-4 w-full text-white p-2 rounded-md hover:bg-yellow-500 hover:scale-105 active:scale-100 transition transform duration-200 ease-in-out"
         >
           Submit
         </button>
