@@ -30,7 +30,6 @@ const CreateButton = ({ redirect, buttonText }) => {
       profilepic: profilepic,
       username: username,
     });
-    console.log(user);
     router.push(`${redirect}`);
   };
 
