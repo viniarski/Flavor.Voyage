@@ -5,29 +5,29 @@ import { createClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import time from "../../../../public/icons/duration.png"
 import serving from "../../../../public/icons/serving_size.png"
-import Ratings from "@/components/ratings";
 import Image from "next/image";
 import Link from "next/link";
+import { revalidatePath } from "next/cache";
+import RatingButtons from "@/components/RatingsButtons";
 
 export default function Page({params}) {
 
-    // console.log(params)
-
     const [recipes, setRecipes] = useState([]);
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+        
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+    // console.log(supabase)
 
     useEffect(() => {
         const fetchRecipes = async () => {
-            const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-            const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-    
-            const supabase = createClient(supabaseUrl, supabaseAnonKey);
-    
             const { data } = await supabase
                 .from('recipes')
                 .select("*, users(username), categories(category_name)")
                 .eq('recipe_id', `${params.recipe_id}`);
 
-            console.log(data[0])
+            // console.log(data[0])
             setRecipes(data[0])
 
         };
@@ -35,16 +35,17 @@ export default function Page({params}) {
         fetchRecipes()
     }, []);
 
-    // console.log(recipes)
-
     return (
         <div className="min-h-full flex flex-col items-center">
             <PageHeader header={`${recipes.recipe_title}`} description={`How to prepare and cook ${recipes.recipe_title}`} img={"url('/images/4.avif')"} />
-            <div className="py-4 flex flex-col items-center">
+            <div className="py-4 flex flex-col items-center gap-8">
                 <div className="grid grid-cols-2 pt-16 gap-16">
                 <img src={recipes.imgurl} className="rounded-3xl" alt="Chickpea" width={400} />
                     <div>
-                    
+                        <div className="flex gap-4">
+                            <p className="text-md font-bold mb-2 text-accent">Uploaded: <span className="text-black font-normal">{recipes.date_created}</span></p>
+                            <p className="text-md font-bold mb-2 text-accent">By: <Link href={'#'} className="text-black font-normal hover:underline">{recipes.users?.username}</Link></p>
+                        </div>
                         <h2 className="text-lg font-bold mb-2 text-accent">Category: <Link href={'#'} className="text-black font-normal hover:underline">{recipes.categories?.category_name}</Link></h2>
                         <div className="grid grid-cols-2 max-h-8 my-2">
                             <div className="flex gap-2">
@@ -58,26 +59,27 @@ export default function Page({params}) {
                         </div>
                         <div>
                             <h3 className="text-lg font-bold mb-2 text-accent">Ingredients:</h3>
-                            {recipes.recipe_ingredients.map((ingredient, i) => (
+                            {/* {recipes.recipe_ingredients.map((ingredient, i) => (
                                 <li key={i} className="text-gray-700">
                                 {ingredient}
                                 </li>
-                            ))}
+                            ))} */}
                         </div>
                     </div>
                 </div>
-                <div className="my-4 flex gap-4">
-                        <p className="text-lg font-bold mb-2 text-accent">Uploaded: <span className="text-black font-normal">{recipes.date_created}</span></p>
-                        <p className="text-lg font-bold mb-2 text-accent">By: <Link href={'#'} className="text-black font-normal hover:underline">{recipes.users?.username}</Link></p>
-                    </div>
+                
                 <div className="max-w-[850px]">
                     <h3 className="text-lg font-bold mb-2 text-accent">Cooking Instruction:</h3>
                     <p className="text-lg">{recipes.cooking_instructions}</p>
                 </div>
             </div>
+            
             <div className="mb-4 flex flex-col items-center gap-4">
                 <p>Leave a rating</p>
-                <Ratings />
+                <RatingButtons 
+                    recipe_id={recipes.recipe_id}
+                    supabase={supabase}
+                />
             </div>
         </div>
     )
