@@ -114,7 +114,7 @@ const ProfilePage = () => {
         />
         <button
           onClick={handleFormToggle}
-          className="mt-4 bg-accent text-white px-4 py-2 rounded-md hover:bg-accentDark"
+          className="mt-4 bg-accent text-white px-4 py-2 rounded-md hover:bg-accentDark hover:scale-105 active:scale-100 transition transform duration-200 ease-in-out"
         >
           Edit Profile
         </button>
