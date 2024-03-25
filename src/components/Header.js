@@ -30,7 +30,7 @@ export default function Header({ username }) {
             Recipes
           </Link>
           <Link
-            href={"#"}
+            href={"/about"}
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
           >
             About
@@ -42,7 +42,7 @@ export default function Header({ username }) {
             Blog
           </Link>
           <Link
-            href={"#"}
+            href={"/contact"}
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
           >
             Contact
