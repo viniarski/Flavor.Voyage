@@ -1,5 +1,5 @@
 // src/app/recipes/[recipe_id]/page.js
-"use client";
+'use client';
 
 import PageHeader from "@/components/pageHeader";
 import { createClient } from "@supabase/supabase-js";
