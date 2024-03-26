@@ -1,17 +1,17 @@
 // components/Search.js
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Search = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
 
   const handleSearch = (e) => {
     e.preventDefault();
     router.push(`/search?query=${encodeURIComponent(searchQuery)}`);
-    setSearchQuery('');
+    setSearchQuery("");
   };
 
   return (
@@ -34,7 +34,7 @@ const Search = () => {
               placeholder="Search recipes..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="flex-grow px-4 py-2 text-gray-800 focus:outline-none"
+              className="flex-grow px-4 py-2 text-gray-800 focus:outline-none text-white"
             />
             <button
               type="submit"
