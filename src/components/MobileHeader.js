@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { UserButton } from "@clerk/nextjs";
+import loginIcon from "../../public/icons/login.png";
 
 const MobileHeader = ({ username, userId }) => {
   return (
