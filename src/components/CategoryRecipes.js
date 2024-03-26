@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import RecipeCard from './RecipeCard';
+import PageHeader from './pageHeader';
 
 const CategoryRecipes = ({ category }) => {
   const [recipes, setRecipes] = useState([]);
@@ -42,22 +43,25 @@ const CategoryRecipes = ({ category }) => {
     }
   }, [category]);
 
-  if (!category) {
-    return <div>No category selected.</div>;
-  }
-
   return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-8">{category} Recipes</h1>
-      {recipes.length === 0 ? (
-        <p>No recipes found for this category.</p>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {recipes.map((recipe) => (
-            <RecipeCard key={recipe.recipe_id} recipe={recipe} />
-          ))}
-        </div>
-      )}
+    <div>
+      <PageHeader
+        header={`${category} Recipes`}
+        description={`Explore delicious ${category} recipes`}
+        img={"url('/images/4.avif')"}
+      />
+      <div className="container mx-auto py-8">
+        <h1 className="text-3xl font-bold mb-8">{category} Recipes</h1>
+        {recipes.length === 0 ? (
+          <p>No recipes found for this category.</p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            {recipes.map((recipe) => (
+              <RecipeCard key={recipe.recipe_id} recipe={recipe} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

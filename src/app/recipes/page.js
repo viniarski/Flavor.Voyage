@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
-import PageHeader from "@/components/pageHeader";
-import CreateButton from "@/components/createPost";
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import { createClient } from '@supabase/supabase-js';
+import PageHeader from '@/components/pageHeader';
+import CreateButton from '@/components/createPost';
 
 export default function Page() {
   const [recipes, setRecipes] = useState([]);
@@ -16,20 +16,19 @@ export default function Page() {
 
       const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-      const { data } = await supabase.from("recipes").select("*");
+      const { data } = await supabase.from('recipes').select('*');
 
       setRecipes(data);
     };
-    
+
     fetchRecipes();
-    
   }, []);
 
   return (
     <div className="min-h-full flex flex-col items-center">
       <PageHeader
-        header={"Recipes"}
-        description={"Browse through recipes available"}
+        header={'Recipes'}
+        description={'Browse through recipes available'}
         img={"url('/images/4.avif')"}
       />
       <CreateButton redirect="/recipes/new-recipe" buttonText="Create Recipe" />
@@ -40,12 +39,13 @@ export default function Page() {
             className="bg-gray-100 max-w-full rounded-lg p-2 my-4"
           >
             <div className="grid grid-cols-2 gap-8">
-              <img
-                src={recipe.imgurl}
-                className="rounded-3xl"
-                alt="Chickpea"
-                width={400}
-              />
+              <div className="w-96 h-96 overflow-hidden">
+                <img
+                  src={recipe.imgurl}
+                  className="rounded-3xl w-full h-full object-cover"
+                  alt="Chickpea"
+                />
+              </div>
               <div className="flex flex-col gap-4">
                 <h2 className="text-3xl font-bold">{recipe.recipe_title}</h2>
                 <div>
