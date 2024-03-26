@@ -28,20 +28,22 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="min-h-full flex flex-col items-center">
+    <div className="min-h-full flex flex-col justify-around">
       <PageHeader
         header={"Recipes"}
         description={"Browse through recipes available"}
         img={"url('/images/4.avif')"}
       />
-      <CreateButton redirect="/recipes/new-recipe" buttonText="Create Recipe" />
-      <div className="min-h-full grid grid-cols-2">
+      <div className="flex justify-center">
+        <CreateButton redirect="/recipes/new-recipe" buttonText="Create Recipe" />
+      </div>
+      <div className="min-h-full grid grid-cols-2 justify-items-center">
         {recipes.map((recipe) => (
           <div
             key={recipe.recipe_id}
-            className="bg-gray-100 max-w-full rounded-lg p-2 my-4"
+            className="bg-gray-200 rounded-lg p-2 my-4 min-h-[450px] flex items-center"
           >
-            <div className="grid grid-cols-2 gap-8 px-4 py-2">
+            <div className="grid grid-cols-2 gap-8 px-4 py-2 max-w-[800px] items-center">
               <Image
                 src={recipe.imgurl}
                 className="rounded-3xl"
@@ -66,7 +68,7 @@ export default function Page() {
                 <div className="flex items-center">
                   <Link
                     href={`/recipes/${recipe.recipe_id}`}
-                    className="bg-accent text-lg text-white px-4 py-2 rounded-md"
+                    className="bg-accent text-lg text-white px-4 py-2 rounded-md hover:scale-105 active:scale-100 transition transform duration-200 ease-in-out"
                   >
                     View Recipe
                   </Link>

@@ -1,5 +1,5 @@
 // src/app/recipes/[recipe_id]/page.js
-"use client";
+'use client';
 
 import PageHeader from "@/components/pageHeader";
 import { createClient } from "@supabase/supabase-js";
@@ -66,6 +66,7 @@ export default function Page({ params }) {
               <p className="text-md font-bold mb-2 text-accent">
                 By:{" "}
                 <Link
+                  // href={`/user-profile/${recipes.users?.username}`}
                   href={"#"}
                   className="text-black font-normal hover:underline"
                 >
@@ -109,18 +110,14 @@ export default function Page({ params }) {
           <h3 className="text-lg font-bold mb-2 text-accent">
             Cooking Instruction:
           </h3>
-          <p className="text-lg">{recipes.cooking_instructions}</p>
+          <p className="text-lg whitespace-pre-line">{recipes.cooking_instructions}</p>
         </div>
       </div>
-
-      <div className="mb-4 flex flex-col items-center gap-4">
-        <p>Leave a rating</p>
         <RatingButtons
           recipe_id={recipes.recipe_id}
           supabase={supabase}
           ratings={ratings.data}
         />
-      </div>
 
       <RecipeCommentsSection params={params} />
     </div>
