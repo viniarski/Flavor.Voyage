@@ -44,13 +44,13 @@ export default function Header({ username, userId }) {
       <nav>
         <ul className="flex gap-8 text-2xl items-center">
           <Link
-            href={"/"}
+            href={'/'}
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
           >
             Home
           </Link>
           <Link
-            href={"/recipes"}
+            href={'/recipes'}
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
           >
             Recipes

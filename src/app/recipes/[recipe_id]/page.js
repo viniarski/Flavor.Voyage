@@ -8,22 +8,17 @@ import time from "../../../../public/icons/duration.png"
 import serving from "../../../../public/icons/serving_size.png"
 import Image from "next/image";
 import Link from "next/link";
-import { revalidatePath } from "next/cache";
 import RatingButtons from "@/components/RatingsButtons";
-import { useUser } from "@clerk/nextjs";
 
 export default function Page({ params }) {
   
     const [recipes, setRecipes] = useState([]);
     const [ratings, setRatings] = useState([])
-    
 
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
         
     const supabase = createClient(supabaseUrl, supabaseAnonKey);
-
-    // console.log(supabase)
 
     useEffect(() => {
         const fetchRecipes = async () => {
