@@ -1,14 +1,14 @@
-'use client';
-import { createClient } from '@supabase/supabase-js';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useUser } from '@clerk/clerk-react';
-import PageHeader from '@/components/pageHeader';
+"use client";
+import { createClient } from "@supabase/supabase-js";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useUser } from "@clerk/clerk-react";
+import PageHeader from "@/components/pageHeader";
 
 const CreateBlogForm = () => {
-  const [blogTitle, setBlogTitle] = useState('');
-  const [blogContent, setBlogContent] = useState('');
-  const [imgUrl, setImgUrl] = useState('');
+  const [blogTitle, setBlogTitle] = useState("");
+  const [blogContent, setBlogContent] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
 
   const router = useRouter();
   const { user } = useUser();
@@ -21,14 +21,14 @@ const CreateBlogForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    await supabase.from('blogs').insert({
+    await supabase.from("blogs").insert({
       blog_title: blogTitle,
       user_id: userId,
       blog_content: blogContent,
       imgurl: imgUrl,
     });
 
-    router.push('/blog-posts');
+    router.push("/blog-posts");
   };
 
   return (
@@ -41,7 +41,7 @@ const CreateBlogForm = () => {
       <div className="container mx-auto px-4 py-8">
         <form
           onSubmit={handleSubmit}
-          className="bg-white shadow-md rounded-lg p-6"
+          className="bg-white shadow-md rounded-lg p-6 text-white"
         >
           <label className="block mb-4">
             <span className="text-gray-700">Blog Title:</span>

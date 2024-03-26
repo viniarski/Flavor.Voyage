@@ -1,18 +1,18 @@
-'use client';
-import { createClient } from '@supabase/supabase-js';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useUser } from '@clerk/clerk-react';
-import PageHeader from '@/components/pageHeader';
+"use client";
+import { createClient } from "@supabase/supabase-js";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useUser } from "@clerk/clerk-react";
+import PageHeader from "@/components/pageHeader";
 
 const CreateRecipeForm = () => {
-  const [recipeTitle, setRecipeTitle] = useState('');
-  const [recipeIngredients, setRecipeIngredients] = useState(['']);
-  const [cookingInstructions, setCookingInstructions] = useState('');
-  const [servingSize, setServingSize] = useState('');
-  const [preparationTime, setPreparationTime] = useState('');
-  const [category, setCategory] = useState('');
-  const [imgUrl, setImgUrl] = useState('');
+  const [recipeTitle, setRecipeTitle] = useState("");
+  const [recipeIngredients, setRecipeIngredients] = useState([""]);
+  const [cookingInstructions, setCookingInstructions] = useState("");
+  const [servingSize, setServingSize] = useState("");
+  const [preparationTime, setPreparationTime] = useState("");
+  const [category, setCategory] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
 
   const router = useRouter();
   const { user } = useUser();
@@ -25,7 +25,7 @@ const CreateRecipeForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    await supabase.from('recipes').insert({
+    await supabase.from("recipes").insert({
       recipe_title: recipeTitle,
       user_id: userId,
       recipe_ingredients: recipeIngredients,
@@ -36,11 +36,11 @@ const CreateRecipeForm = () => {
       imgurl: imgUrl,
     });
 
-    router.push('/recipes');
+    router.push("/recipes");
   };
 
   const handleAddIngredientInput = () => {
-    setRecipeIngredients([...recipeIngredients, '']);
+    setRecipeIngredients([...recipeIngredients, ""]);
   };
 
   const handleIngredientInputChange = (index, value) => {
@@ -59,7 +59,7 @@ const CreateRecipeForm = () => {
       <div className="container mx-auto px-4 py-8">
         <form
           onSubmit={handleSubmit}
-          className="bg-white shadow-md rounded-lg p-6"
+          className="bg-white shadow-md rounded-lg p-6 text-white"
         >
           <label className="block mb-4">
             <span className="text-gray-700">Recipe Title:</span>
