@@ -1,8 +1,12 @@
+'use client'
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Newsletter from './Newsletter';
 
 const Footer = () => {
+
   return (
     <footer className="bg-gray-800 text-white py-8">
       <div className="container mx-auto px-4">
@@ -76,21 +80,7 @@ const Footer = () => {
             <p className="text-gray-400 mb-4">
               Stay updated with our latest recipes and food adventures.
             </p>
-            <form>
-              <div className="flex">
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="w-full px-4 py-2 text-gray-800 bg-white rounded-l-md focus:outline-none"
-                />
-                <button
-                  type="submit"
-                  className="px-4 py-2 text-white bg-accent rounded-r-md hover:bg-accent-dark focus:outline-none"
-                >
-                  Subscribe
-                </button>
-              </div>
-            </form>
+            <Newsletter />
           </div>
         </div>
         <hr className="my-8 border-gray-700" />

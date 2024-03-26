@@ -44,7 +44,7 @@ export default function RecipeCommentsSection({ params }) {
 
   return (
     <>
-      <form onSubmit={handleSaveComment} className="flex flex-col m-8">
+      <form onSubmit={handleSaveComment} className="flex flex-col m-4 w-9/12">
         <label
           htmlFor="recipe_comment"
           className="mt-4 text-accent text-xl font-bold px-4 py-2"
@@ -68,7 +68,7 @@ export default function RecipeCommentsSection({ params }) {
       {displayRecipeComments.map((recipeComment) => (
         <div
           key={recipeComment.recipe_comment_id}
-          className="bg-white shadow rounded-lg m-6 h-fit p-4"
+          className="bg-white shadow rounded-lg m-6 h-fit p-4 w-9/12"
         >
           <div className="flex justify-between p-2 ">
             <h3 className="text-xl font-bold text-accent">

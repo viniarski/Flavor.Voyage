@@ -1,12 +1,38 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../public/logo.png";
 import { UserButton } from "@clerk/nextjs";
-import { auth } from "@clerk/nextjs";
 import loginIcon from "../../public/icons/login.png";
+import MobileHeader from "@/components/MobileHeader";
 
-export default function Header({ username }) {
-  const { userId } = auth();
+export default function Header({ username, userId }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const smallLaptopBreakpoint = 1024;
+
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < smallLaptopBreakpoint);
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      handleResize();
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, []);
+
+  if (isMobile) {
+    return <MobileHeader username={username} userId={userId} />;
+  }
+
   return (
     <header className="flex bg-white py-4 px-8 justify-between items-center">
       <Link href="/">
@@ -18,13 +44,13 @@ export default function Header({ username }) {
       <nav>
         <ul className="flex gap-8 text-2xl items-center">
           <Link
-            href={"/"}
+            href={'/'}
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
           >
             Home
           </Link>
           <Link
-            href={"/recipes"}
+            href={'/recipes'}
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
           >
             Recipes

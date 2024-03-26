@@ -27,18 +27,20 @@ export default function BlogPostList() {
       {blogs.map((blog) => (
         <div
           key={blog.blog_id}
-          className="bg-white shadow rounded-lg flex m-6 h-[200px]"
+          className="bg-white shadow rounded-lg flex flex-col sm:flex-row m-6 md:h-[200px]"
         >
           <Image
             src={blog.imgurl}
             alt="picture of delicious food"
-            width={200}
-            height={200}
-            className="mx-4"
+            width={100}
+            height={100}
+            className="m-4 md:mx-4 rounded-md md:max-w-[150px] md:max-h-[150px] lg:max-w-[250px]  "
           />
           <div className="p-4">
-            <h3 className="text-3xl font-bold mb-2">{blog.blog_title}</h3>
-            <p className="text-xl mb-4 truncate whitespace-nowrap overflow-hidden w-[900px]">
+            <h3 className="text-lg md:text-xl lg:text-3xl font-bold mb-2 max-w-[300px] sm:max-w-[400px] md:max-w-[550px] lg:max-w-[800px]">
+              {blog.blog_title}
+            </h3>
+            <p className="md:text-xl mb-4 truncate whitespace-nowrap overflow-hidden invisible sm:visible sm:w-[400px] md:w-[550px] lg:w-[800px] xl:w-[900px]">
               {blog.blog_content}
             </p>
             <Link href={`/blog-posts/${blog.blog_id}`}>
