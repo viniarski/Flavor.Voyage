@@ -33,15 +33,15 @@ export default function DynamicBlogPostPage({ params }) {
         description={`By ${blog.users?.username}`}
         img={"url('/images/4.avif')"}
       />
-      <div className="flex m-4">
+      <div className="flex flex-col m-4 items-center lg:flex-row lg:items-start">
         <Image
           src={blog.imgurl}
           alt="picture of delicious food"
           width={400}
           height={350}
-          className="m-4 max-h-[350px]"
+          className="m-4 max-h-[350px] rounded-md"
         />
-        <div>
+        <div className="flex flex-col items-center lg:items-start">
           <p>
             <span className="text-lg font-bold text-accent m-4">Created:</span>
             {`${blog.date_created}`.slice(0, 10)}
