@@ -1,14 +1,29 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
-import Image from 'next/image';
-import Link from 'next/link';
+import React, { useState, useEffect } from "react";
+import { createClient } from "@supabase/supabase-js";
+import Image from "next/image";
+import Link from "next/link";
 
 const CarouselComponent = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showDescription, setShowDescription] = useState(false);
   const [slides, setSlides] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -18,11 +33,11 @@ const CarouselComponent = () => {
       const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
       const { data: allRecipes, error } = await supabase
-        .from('recipes')
-        .select('*');
+        .from("recipes")
+        .select("*");
 
       if (error) {
-        console.error('Error fetching recipes:', error);
+        console.error("Error fetching recipes:", error);
       } else {
         const shuffledRecipes = shuffleArray(allRecipes);
         const randomRecipes = shuffledRecipes.slice(0, 5);
@@ -57,7 +72,7 @@ const CarouselComponent = () => {
     setShowDescription((prevShowDescription) => !prevShowDescription);
   };
 
-  return (
+  return !isMobile ? (
     <div className="relative h-[58vh] overflow-hidden">
       {slides.length > 0 ? (
         <>
@@ -109,8 +124,8 @@ const CarouselComponent = () => {
                       className="bg-accent text-white px-4 py-2 rounded-md"
                     >
                       {showDescription
-                        ? 'Show Ingredients'
-                        : 'Show How to Prepare'}
+                        ? "Show Ingredients"
+                        : "Show How to Prepare"}
                     </button>
                   </div>
                   {showDescription ? (
@@ -157,8 +172,8 @@ const CarouselComponent = () => {
                         <div
                           className={`grid ${
                             slide.recipe_ingredients.length > 6
-                              ? 'grid-cols-2'
-                              : 'grid-cols-1'
+                              ? "grid-cols-2"
+                              : "grid-cols-1"
                           } gap-2`}
                         >
                           {slide.recipe_ingredients.map((ingredient, i) => (
@@ -193,8 +208,73 @@ const CarouselComponent = () => {
                 onClick={() => setCurrentSlide(index)}
                 className={`w-3 h-3 rounded-full transition-colors duration-300 ${
                   currentSlide === index
-                    ? 'bg-accent'
-                    : 'bg-gray-300 hover:bg-gray-400'
+                    ? "bg-accent"
+                    : "bg-gray-300 hover:bg-gray-400"
+                }`}
+              ></button>
+            ))}
+          </div>
+        </>
+      ) : (
+        <div className="flex items-center justify-center h-full">
+          <p className="text-gray-500">Loading recipes...</p>
+        </div>
+      )}
+    </div>
+  ) : (
+    <div className="relative h-[58vh] overflow-hidden">
+      {slides.length > 0 ? (
+        <>
+          <div
+            className="flex transition-transform duration-500"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {slides.map((slide, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 w-full flex-col items-center justify-center mt-16"
+              >
+                <div className="w-[47vh] h-[51vh] rounded-lg overflow-hidden">
+                  <h3 className="text-3xl font-bold mb-4 text-center">
+                    {slide.recipe_title}
+                  </h3>
+                  <Link
+                    href={`/recipes/${slide.recipe_id}`}
+                    className="block w-full bg-accent text-lg text-white px-4 py-2  hover:scale-105 active:scale-100 transition transform duration-200 ease-in-out text-center"
+                  >
+                    Read More
+                  </Link>
+                  <img
+                    src={slide.imgurl}
+                    alt={slide.recipe_title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="w-1/2 h-[55vh] p-8 overflow-y-auto"></div>
+              </div>
+            ))}
+          </div>
+          <button
+            onClick={prevSlide}
+            className="absolute left-8 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
+          >
+            <img src="/icons/prev.png" alt="Previous" className="w-6 h-6" />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-8 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
+          >
+            <img src="/icons/next.png" alt="Next" className="w-6 h-6" />
+          </button>
+          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                  currentSlide === index
+                    ? "bg-accent"
+                    : "bg-gray-300 hover:bg-gray-400"
                 }`}
               ></button>
             ))}
