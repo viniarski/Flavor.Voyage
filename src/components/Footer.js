@@ -1,6 +1,16 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+"use client";
+import React from "react";
+import Link from "next/link";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  PinterestShareButton,
+  PinterestIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+} from "next-share";
 
 const Footer = () => {
   return (
@@ -99,26 +109,20 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} Flavor Voyage. All rights
             reserved.
           </p>
-          <div className="flex space-x-4">
-            <a href="#" className="text-gray-400 hover:text-white">
-              <Image
-                src="/icons/facebook.png"
-                alt="Facebook"
-                width={24}
-                height={24}
-              />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white">
-              <Image src="/icons/x.png" alt="X" width={24} height={24} />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white">
-              <Image
-                src="/icons/instagram.png"
-                alt="Instagram"
-                width={24}
-                height={24}
-              />
-            </a>
+          <div className="flex space-x-2">
+            <p className="text-gray-400 mt-2">Share Flavor Voyage:</p>
+            <FacebookShareButton url={"https://flavor-voyage-five.vercel.app"}>
+              <FacebookIcon size={40} round bgStyle={{ opacity: 0 }} />
+            </FacebookShareButton>
+            <TwitterShareButton url={"https://flavor-voyage-five.vercel.app"}>
+              <TwitterIcon size={40} round bgStyle={{ opacity: 0 }} />
+            </TwitterShareButton>
+            <PinterestShareButton url={"https://flavor-voyage-five.vercel.app"}>
+              <PinterestIcon size={40} round bgStyle={{ opacity: 0 }} />
+            </PinterestShareButton>
+            <WhatsappShareButton url={"https://flavor-voyage-five.vercel.app"}>
+              <WhatsappIcon size={40} round bgStyle={{ opacity: 0 }} />
+            </WhatsappShareButton>
           </div>
         </div>
       </div>
