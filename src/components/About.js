@@ -1,7 +1,5 @@
 "use client";
 
-"use client";
-
 import React, { useEffect, useState } from "react";
 
 const About = () => {
@@ -37,9 +35,11 @@ const About = () => {
         <p className="text-lg text-white mb-8 sm:mb-o">
           Meet the team behind Flavor.Voyage
         </p>
-        <div className="flex flex-col sm:flex-col ">
+        <div
+          className={`flex ${windowWidth <= 1281 ? "flex-col" : "flex-row"}  `}
+        >
           <div className="w-full md:w-1/2 mb-8 md:mb-0">
-            <div className="flex flex-wrap md:flex-nowrap justify-center md:justify-start items-end space-y-4 md:space-y-0 space-x-4 md:space-x-10">
+            <div className="flex flex-wrap md:flex-nowrap justify-center md:justify-start items-baseline space-y-4 md:space-y-0 space-x-4 md:space-x-10">
               <div className="w-36 h-36 bg-gray-300 rounded-full transition duration-300 ease-in-out transform hover:scale-105 aspect-square object-cover"></div>
               <div className="w-36 h-36 bg-gray-300 rounded-full transition duration-300 ease-in-out transform hover:scale-105 aspect-square object-cover"></div>
               <div className="w-36 h-36 bg-gray-300 rounded-full transition duration-300 ease-in-out transform hover:scale-105 aspect-square object-cover"></div>
