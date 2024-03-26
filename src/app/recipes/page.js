@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import PageHeader from "@/components/pageHeader";
 import CreateButton from "@/components/createPost";
+import Image from "next/image";
+
 
 export default function Page() {
   const [recipes, setRecipes] = useState([]);
@@ -39,12 +41,13 @@ export default function Page() {
             key={recipe.recipe_id}
             className="bg-gray-100 max-w-full rounded-lg p-2 my-4"
           >
-            <div className="grid grid-cols-2 gap-8">
-              <img
+            <div className="grid grid-cols-2 gap-8 px-4 py-2">
+              <Image
                 src={recipe.imgurl}
                 className="rounded-3xl"
                 alt="Chickpea"
                 width={400}
+                height={200}
               />
               <div className="flex flex-col gap-4">
                 <h2 className="text-3xl font-bold">{recipe.recipe_title}</h2>
