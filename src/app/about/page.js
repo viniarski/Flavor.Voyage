@@ -25,8 +25,8 @@ const About = () => {
           </p>
         </div>
         <div className="w-full md:w-1/2">
-          <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
-          <p className="text-gray-700 mb-16">
+          <h3 className="text-2xl font-bold mb-4 ml-4">Our Vision</h3>
+          <p className="text-gray-700 mb-16 ml-4">
             We aspire to be more than just an app; we aim to be a global
             community where food lovers from all corners of the world can come
             together to share their love for gastronomy. Our vision is to
