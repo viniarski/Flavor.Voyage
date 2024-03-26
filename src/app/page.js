@@ -1,11 +1,11 @@
-import Link from 'next/link';
-import RecipeCard from '../components/RecipeCard';
-import BlogPostCard from '../components/BlogPostList';
-import Search from '../components/Search';
-import CarouselComponent from '../components/Carousel';
-import About from '../components/About';
-import LatestBlogPosts from '../components/LatestBlogPosts';
-import RecipeCategories from '../components/RecipeCategories';
+import Link from "next/link";
+import RecipeCard from "../components/RecipeCard";
+import BlogPostCard from "../components/BlogPostList";
+import Search from "../components/Search";
+import CarouselComponent from "../components/Carousel";
+import About from "../components/About";
+import LatestBlogPosts from "../components/LatestBlogPosts";
+import RecipeCategories from "../components/RecipeCategories";
 
 export default function HomePage() {
   return (
@@ -35,7 +35,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       <About />
     </div>
   );
