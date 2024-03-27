@@ -6,12 +6,18 @@ import CarouselComponent from "../components/Carousel";
 import About from "../components/About";
 import LatestBlogPosts from "../components/LatestBlogPosts";
 import RecipeCategories from "../components/RecipeCategories";
+import PageHeader from "@/components/pageHeader";
 
 export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
       <section className="bg-secondary">
+        <PageHeader
+          header="Welcome to Flavor Voyage"
+          description="Discover delicious recipes and culinary adventures!"
+          img="url('/images/4.avif')"
+        />
         <Search />
         <CarouselComponent />
       </section>
