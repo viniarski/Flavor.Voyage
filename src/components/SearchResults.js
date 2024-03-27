@@ -5,6 +5,7 @@ import React from 'react';
 import { useSearchParams } from 'next/navigation';
 import SearchResultItem from './SearchResultItem';
 import { searchRecipes } from '../lib/searchRecipes';
+import PageHeader from './pageHeader';
 
 const SearchResults = () => {
   const searchParams = useSearchParams();
@@ -27,10 +28,9 @@ const SearchResults = () => {
   }, [query]);
 
   return (
+    <>
+    <PageHeader header={`Search Results for "${query}"`} img={"url('/images/4.avif')"} />
     <div className="container mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold mb-6">
-        Search Results for &quot;{query}&quot;
-      </h2>
       {searchResults.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {searchResults.map((recipe) => (
@@ -41,6 +41,7 @@ const SearchResults = () => {
         <p className="text-gray-600">No results found.</p>
       )}
     </div>
+    </>
   );
 };
 
