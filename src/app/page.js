@@ -1,23 +1,23 @@
-import Link from "next/link";
-import RecipeCard from "../components/RecipeCard";
-import BlogPostCard from "../components/BlogPostList";
-import Search from "../components/Search";
-import CarouselComponent from "../components/Carousel";
-import About from "../components/About";
-import LatestBlogPosts from "../components/LatestBlogPosts";
-import RecipeCategories from "../components/RecipeCategories";
+import Link from 'next/link';
+import RecipeCard from '../components/RecipeCard';
+import BlogPostCard from '../components/BlogPostList';
+import Search from '../components/Search';
+import CarouselComponent from '../components/Carousel';
+import About from '../components/About';
+import LatestBlogPosts from '../components/LatestBlogPosts';
+import RecipeCategories from '../components/RecipeCategories';
 
 export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-secondary">
+      <section aria-label="Hero Section" className="bg-secondary">
         <Search />
         <CarouselComponent />
       </section>
 
       {/* Latest Blog Posts and Recipe Categories Sections */}
-      <section className="py-16">
+      <section aria-label="Latest Content" className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>

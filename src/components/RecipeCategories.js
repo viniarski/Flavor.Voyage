@@ -24,7 +24,7 @@ export default function RecipeCategories() {
               <div className="bg-white rounded-full h-32 w-32 flex items-center justify-center shadow relative overflow-hidden transition duration-300 ease-in-out transform hover:scale-105">
                 {category === 'Desserts' && (
                   <Image
-                    src="/images/6.avif"
+                    src="/images/6.webp"
                     alt="Dessert"
                     layout="fill"
                     objectFit="cover"
@@ -33,7 +33,7 @@ export default function RecipeCategories() {
                 )}
                 {category === 'Vegetarian' && (
                   <Image
-                    src="/images/8.avif"
+                    src="/images/8.webp"
                     alt="Vegetarian"
                     layout="fill"
                     objectFit="cover"
@@ -42,7 +42,7 @@ export default function RecipeCategories() {
                 )}
                 {category === 'Dinner' && (
                   <Image
-                    src="/images/10.avif"
+                    src="/images/10.webp"
                     alt="Dinner"
                     layout="fill"
                     objectFit="cover"
@@ -51,7 +51,7 @@ export default function RecipeCategories() {
                 )}
                 {category === 'Vegan' && (
                   <Image
-                    src="/images/9.avif"
+                    src="/images/9.webp"
                     alt="Vegen"
                     layout="fill"
                     objectFit="cover"
@@ -60,7 +60,7 @@ export default function RecipeCategories() {
                 )}
                 {category === 'Snacks' && (
                   <Image
-                    src="/images/11.avif"
+                    src="/images/11.webp"
                     alt="Snacks"
                     layout="fill"
                     objectFit="cover"
@@ -69,7 +69,7 @@ export default function RecipeCategories() {
                 )}
                 {category === 'Gluten-free' && (
                   <Image
-                    src="/images/12.avif"
+                    src="/images/12.webp"
                     alt="Gluten Free"
                     layout="fill"
                     objectFit="cover"
@@ -78,7 +78,7 @@ export default function RecipeCategories() {
                 )}
                 {category === 'Breakfast' && (
                   <Image
-                    src="/images/14.avif"
+                    src="/images/14.webp"
                     alt="Snacks"
                     layout="fill"
                     objectFit="cover"
@@ -87,7 +87,7 @@ export default function RecipeCategories() {
                 )}
                 {category === 'Lunch' && (
                   <Image
-                    src="/images/13.avif"
+                    src="/images/13.webp"
                     alt="Gluten Free"
                     layout="fill"
                     objectFit="cover"

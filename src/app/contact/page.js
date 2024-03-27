@@ -1,12 +1,12 @@
-import PageHeader from "@/components/pageHeader";
-import ContactForm from "../../components/contactForm";
+import PageHeader from '@/components/pageHeader';
+import ContactForm from '../../components/contactForm';
 const ContactPage = () => {
   return (
     <div>
       <PageHeader
         header="Contact Us"
         description="Give us feedback or report an issue"
-        img="url('/images/4.avif')"
+        img="url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
       />
       <ContactForm />
     </div>

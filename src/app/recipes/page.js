@@ -1,12 +1,11 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
-import PageHeader from "@/components/pageHeader";
-import CreateButton from "@/components/createPost";
-import Image from "next/image";
-
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import { createClient } from '@supabase/supabase-js';
+import PageHeader from '@/components/pageHeader';
+import CreateButton from '@/components/createPost';
+import Image from 'next/image';
 
 export default function Page() {
   const [recipes, setRecipes] = useState([]);
@@ -18,24 +17,28 @@ export default function Page() {
 
       const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-      const { data } = await supabase.from("recipes").select("*");
+      const { data } = await supabase.from('recipes').select('*');
 
       setRecipes(data);
     };
-    
+
     fetchRecipes();
-    
   }, []);
 
   return (
     <div className="min-h-full flex flex-col justify-around">
       <PageHeader
-        header={"Recipes"}
-        description={"Browse through recipes available"}
-        img={"url('/images/4.avif')"}
+        header={'Recipes'}
+        description={'Browse through recipes available'}
+        img={
+          "url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
+        }
       />
       <div className="flex justify-center">
-        <CreateButton redirect="/recipes/new-recipe" buttonText="Create Recipe" />
+        <CreateButton
+          redirect="/recipes/new-recipe"
+          buttonText="Create Recipe"
+        />
       </div>
       <div className="min-h-full grid grid-cols-2 justify-items-center">
         {recipes.map((recipe) => (

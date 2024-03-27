@@ -1,14 +1,14 @@
-"use client";
-import { createClient } from "@supabase/supabase-js";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useUser } from "@clerk/clerk-react";
-import PageHeader from "@/components/pageHeader";
+'use client';
+import { createClient } from '@supabase/supabase-js';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useUser } from '@clerk/clerk-react';
+import PageHeader from '@/components/pageHeader';
 
 const CreateBlogForm = () => {
-  const [blogTitle, setBlogTitle] = useState("");
-  const [blogContent, setBlogContent] = useState("");
-  const [imgUrl, setImgUrl] = useState("");
+  const [blogTitle, setBlogTitle] = useState('');
+  const [blogContent, setBlogContent] = useState('');
+  const [imgUrl, setImgUrl] = useState('');
 
   const router = useRouter();
   const { user } = useUser();
@@ -21,14 +21,14 @@ const CreateBlogForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    await supabase.from("blogs").insert({
+    await supabase.from('blogs').insert({
       blog_title: blogTitle,
       user_id: userId,
       blog_content: blogContent,
       imgurl: imgUrl,
     });
 
-    router.push("/blog-posts");
+    router.push('/blog-posts');
   };
 
   return (
@@ -36,7 +36,7 @@ const CreateBlogForm = () => {
       <PageHeader
         header="Create Blog Post"
         description="Share your thoughts and experiences"
-        img="url('/images/4.avif')"
+        img="url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
       />
       <div className="container mx-auto px-4 py-8">
         <form

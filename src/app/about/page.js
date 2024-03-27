@@ -1,4 +1,4 @@
-import PageHeader from "@/components/pageHeader";
+import PageHeader from '@/components/pageHeader';
 
 const About = () => {
   return (
@@ -7,7 +7,7 @@ const About = () => {
         header="About Us"
         description="We are a group of passionate people who are passionate about cooking
             and sharing our knowledge with the world."
-        img="url('/images/4.avif')"
+        img="url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
       />
       <h2 className="text-3xl font-bold mb-8 text-accent ml-4">About Us</h2>
       <div className="flex flex-col md:flex-row justify-between">

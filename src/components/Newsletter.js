@@ -36,6 +36,7 @@ export default function Newsletter() {
                 <form onChange={(e) => setEmail(e.target.value)} onSubmit={handleNewsletter}>
                     <div className="flex">
                         <input
+                        aria-label="Subscribtion Section"
                         type="email"
                         id='email'
                         name='email'

@@ -1,30 +1,30 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import logo from "../../public/logo.png";
-import { UserButton } from "@clerk/nextjs";
-import loginIcon from "../../public/icons/login.png";
-import MobileHeader from "@/components/MobileHeader";
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import logo from '../../public/logo.png';
+import { UserButton } from '@clerk/nextjs';
+import loginIcon from '../../public/icons/login.png';
+import MobileHeader from '@/components/MobileHeader';
 
 export default function Header({ username, userId }) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       const smallLaptopBreakpoint = 1024;
 
       const handleResize = () => {
         setIsMobile(window.innerWidth < smallLaptopBreakpoint);
       };
 
-      window.addEventListener("resize", handleResize);
+      window.addEventListener('resize', handleResize);
 
       handleResize();
 
       return () => {
-        window.removeEventListener("resize", handleResize);
+        window.removeEventListener('resize', handleResize);
       };
     }
   }, []);
@@ -37,8 +37,18 @@ export default function Header({ username, userId }) {
     <header className="flex bg-white py-4 px-8 justify-between items-center">
       <Link href="/">
         <div className="flex items-center">
-          <Image src={logo} height={100} width={80} alt="Flavor.Voyage Logo" />
-          <h1 className="text-3xl font-bold p-4">Flavor.Voyage</h1>
+          <Image
+            src={logo}
+            height={100}
+            width="auto"
+            alt="Flavor.Voyage Logo"
+          />
+          <h1
+            className="text-3xl font-bold p-4"
+            aria-label="Flavor Voyage Logo"
+          >
+            Flavor.Voyage
+          </h1>
         </div>
       </Link>
       <nav>
@@ -46,30 +56,35 @@ export default function Header({ username, userId }) {
           <Link
             href={'/'}
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
+            aria-label="Home link"
           >
             Home
           </Link>
           <Link
             href={'/recipes'}
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
+            aria-label="Recipes link"
           >
             Recipes
           </Link>
           <Link
-            href={"/about"}
+            href={'/about'}
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
+            aria-label="About link"
           >
             About
           </Link>
           <Link
-            href={"/blog-posts"}
+            href={'/blog-posts'}
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
+            aria-label="Blog link"
           >
             Blog
           </Link>
           <Link
-            href={"/contact"}
+            href={'/contact'}
             className="hover:underline hover:underline-offset-8 hover:decoration-accent"
+            aria-label="Contact link"
           >
             Contact
           </Link>
@@ -80,7 +95,7 @@ export default function Header({ username, userId }) {
               afterSignOutUrl="/"
             />
           ) : (
-            <Link href={"/sign-in"}>
+            <Link href={'/sign-in'}>
               <Image
                 src={loginIcon}
                 height={24}

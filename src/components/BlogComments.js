@@ -1,10 +1,10 @@
-"use client";
-import { createClient } from "@supabase/supabase-js";
-import { useState, useEffect } from "react";
-import { useUser } from "@clerk/clerk-react";
+'use client';
+import { createClient } from '@supabase/supabase-js';
+import { useState, useEffect } from 'react';
+import { useUser } from '@clerk/clerk-react';
 
 export default function BlogCommentsSection({ params }) {
-  const [blogComment, setBlogComment] = useState("");
+  const [blogComment, setBlogComment] = useState('');
   const [displayBlogComments, setDisplayBlogComments] = useState([]);
 
   useEffect(() => {
@@ -21,15 +21,15 @@ export default function BlogCommentsSection({ params }) {
 
   async function fetchBlogComments() {
     const { data } = await supabase
-      .from("blog_comments")
-      .select("*, users (user_id, username)")
-      .eq("blog_id", `${params.blog_id}`);
+      .from('blog_comments')
+      .select('*, users (user_id, username)')
+      .eq('blog_id', `${params.blog_id}`);
 
     setDisplayBlogComments(data);
   }
 
   const handleSaveComment = async () => {
-    let response = await supabase.from("blog_comments").insert({
+    let response = await supabase.from('blog_comments').insert({
       blog_comment: blogComment,
       user_id: userId,
       blog_id: `${params.blog_id}`,
@@ -38,7 +38,7 @@ export default function BlogCommentsSection({ params }) {
     if (response.ok) {
       fetchBlogComments();
     } else {
-      console.error("Failed to add comment", response.status);
+      console.error('Failed to add comment', response.status);
     }
   };
 
@@ -56,6 +56,7 @@ export default function BlogCommentsSection({ params }) {
           onChange={(event) => setBlogComment(event.target.value)}
           placeholder="Any thoughts? Reviews? Share here!"
           className="px-4 py-2 rounded-md"
+          id="blog_comment"
         />
         <button
           type="submit"

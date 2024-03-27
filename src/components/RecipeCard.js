@@ -20,7 +20,10 @@ const RecipeCard = ({ recipe }) => {
           Preparation Time: {recipe.preparation_time} minutes
         </p>
         <Link href={`/recipes/${recipe.recipe_id}`}>
-          <a className="bg-accent text-white px-4 py-2 rounded-md">
+          <a
+            className="bg-accent text-white px-4 py-2 rounded-md"
+            aria-label="View recipe"
+          >
             View Recipe
           </a>
         </Link>

@@ -1,15 +1,15 @@
 // src/app/recipes/[recipe_id]/page.js
-"use client";
+'use client';
 
-import PageHeader from "@/components/pageHeader";
-import { createClient } from "@supabase/supabase-js";
-import { useEffect, useState } from "react";
-import time from "../../../../public/icons/duration.png";
-import serving from "../../../../public/icons/serving_size.png";
-import Image from "next/image";
-import Link from "next/link";
-import RatingButtons from "@/components/RatingsButtons";
-import RecipeCommentsSection from "@/components/RecipeComments";
+import PageHeader from '@/components/pageHeader';
+import { createClient } from '@supabase/supabase-js';
+import { useEffect, useState } from 'react';
+import time from '../../../../public/icons/duration.png';
+import serving from '../../../../public/icons/serving_size.png';
+import Image from 'next/image';
+import Link from 'next/link';
+import RatingButtons from '@/components/RatingsButtons';
+import RecipeCommentsSection from '@/components/RecipeComments';
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -19,7 +19,7 @@ import {
   PinterestIcon,
   WhatsappShareButton,
   WhatsappIcon,
-} from "next-share";
+} from 'next-share';
 
 export default function Page({ params }) {
   const [recipes, setRecipes] = useState([]);
@@ -33,13 +33,13 @@ export default function Page({ params }) {
   useEffect(() => {
     const fetchRecipes = async () => {
       const { data } = await supabase
-        .from("recipes")
-        .select("*, users(username), categories(category_name)")
-        .eq("recipe_id", `${params.recipe_id}`);
+        .from('recipes')
+        .select('*, users(username), categories(category_name)')
+        .eq('recipe_id', `${params.recipe_id}`);
       setRecipes(data[0]);
     };
     const fetchRatings = async () => {
-      const data = await supabase.from("ratings").select("*");
+      const data = await supabase.from('ratings').select('*');
       // .eq('user_id', `${user?.id}`)
       // console.log(data)
       setRatings(data);
@@ -54,7 +54,9 @@ export default function Page({ params }) {
       <PageHeader
         header={`${recipes.recipe_title}`}
         description={`How to prepare and cook ${recipes.recipe_title}`}
-        img={"url('/images/4.avif')"}
+        img={
+          "url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
+        }
       />
       <div className="py-4 flex flex-col items-center gap-8">
         <div className="grid grid-cols-2 pt-16 gap-16">
@@ -90,16 +92,16 @@ export default function Page({ params }) {
             </div>
             <div className="flex gap-4">
               <p className="text-md font-bold mb-2 text-accent">
-                Uploaded:{" "}
+                Uploaded:{' '}
                 <span className="text-black font-normal">
                   {recipes.date_created}
                 </span>
               </p>
               <p className="text-md font-bold mb-2 text-accent">
-                By:{" "}
+                By:{' '}
                 <Link
                   // href={`/user-profile/${recipes.users?.username}`}
-                  href={"#"}
+                  href={'#'}
                   className="text-black font-normal hover:underline"
                 >
                   {recipes.users?.username}
@@ -107,9 +109,9 @@ export default function Page({ params }) {
               </p>
             </div>
             <h2 className="text-lg font-bold mb-2 text-accent">
-              Category:{" "}
+              Category:{' '}
               <Link
-                href={"#"}
+                href={'#'}
                 className="text-black font-normal hover:underline"
               >
                 {recipes.categories?.category_name}

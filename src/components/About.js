@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
 const About = () => {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -12,10 +12,10 @@ const About = () => {
 
     setWindowWidth(window.innerWidth);
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -23,9 +23,10 @@ const About = () => {
     <section
       className="py-16 bg-cover bg-center h-screen relative"
       style={{
-        backgroundImage: "url('/images/1.avif')",
-        height: windowWidth < 1281 ? "80vh" : "60vh",
+        backgroundImage: "url('/images/1.webp')",
+        height: windowWidth < 1281 ? '80vh' : '60vh',
       }}
+      aria-label="About Us"
     >
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       <div className="container mx-auto px-4 relative z-10">
@@ -36,7 +37,7 @@ const About = () => {
           Meet the team behind Flavor.Voyage
         </p>
         <div
-          className={`flex ${windowWidth <= 1281 ? "flex-col" : "flex-row"}  `}
+          className={`flex ${windowWidth <= 1281 ? 'flex-col' : 'flex-row'}  `}
         >
           <div className="w-full md:w-1/2 mb-8 md:mb-0">
             <div className="flex flex-wrap md:flex-nowrap justify-center md:justify-start items-baseline space-y-4 md:space-y-0 space-x-4 md:space-x-10">
