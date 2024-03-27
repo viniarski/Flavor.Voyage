@@ -1,4 +1,3 @@
-
 "use client";
 import React from "react";
 import Link from "next/link";
@@ -12,12 +11,9 @@ import {
   WhatsappShareButton,
   WhatsappIcon,
 } from "next-share";
-import Image from 'next/image';
-import Newsletter from './Newsletter';
-
+import Newsletter from "./Newsletter";
 
 const Footer = () => {
-
   return (
     <footer className="bg-gray-800 text-white py-8">
       <div className="container mx-auto px-4">

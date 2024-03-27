@@ -1,5 +1,5 @@
 // src/app/recipes/[recipe_id]/page.js
-'use client';
+"use client";
 
 import PageHeader from "@/components/pageHeader";
 import { createClient } from "@supabase/supabase-js";
@@ -10,6 +10,16 @@ import Image from "next/image";
 import Link from "next/link";
 import RatingButtons from "@/components/RatingsButtons";
 import RecipeCommentsSection from "@/components/RecipeComments";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  PinterestShareButton,
+  PinterestIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+} from "next-share";
 
 export default function Page({ params }) {
   const [recipes, setRecipes] = useState([]);
@@ -56,6 +66,28 @@ export default function Page({ params }) {
             height={100}
           />
           <div>
+            <div>
+              <FacebookShareButton
+                url={`https://flavor-voyage-five.vercel.app/blog-posts/${params.blog_id}`}
+              >
+                <FacebookIcon size={32} round className="mb-4" />
+              </FacebookShareButton>
+              <TwitterShareButton
+                url={`https://flavor-voyage-five.vercel.app/blog-posts/${params.blog_id}`}
+              >
+                <TwitterIcon size={32} round className="ml-2 mb-4" />
+              </TwitterShareButton>
+              <PinterestShareButton
+                url={`https://flavor-voyage-five.vercel.app/blog-posts/${params.blog_id}`}
+              >
+                <PinterestIcon size={32} round className="ml-2 mb-4" />
+              </PinterestShareButton>
+              <WhatsappShareButton
+                url={`https://flavor-voyage-five.vercel.app/blog-posts/${params.blog_id}`}
+              >
+                <WhatsappIcon size={32} round className="ml-2 mb-4" />
+              </WhatsappShareButton>
+            </div>
             <div className="flex gap-4">
               <p className="text-md font-bold mb-2 text-accent">
                 Uploaded:{" "}
@@ -110,14 +142,16 @@ export default function Page({ params }) {
           <h3 className="text-lg font-bold mb-2 text-accent">
             Cooking Instruction:
           </h3>
-          <p className="text-lg whitespace-pre-line">{recipes.cooking_instructions}</p>
+          <p className="text-lg whitespace-pre-line">
+            {recipes.cooking_instructions}
+          </p>
         </div>
       </div>
-        <RatingButtons
-          recipe_id={recipes.recipe_id}
-          supabase={supabase}
-          ratings={ratings.data}
-        />
+      <RatingButtons
+        recipe_id={recipes.recipe_id}
+        supabase={supabase}
+        ratings={ratings.data}
+      />
 
       <RecipeCommentsSection params={params} />
     </div>
