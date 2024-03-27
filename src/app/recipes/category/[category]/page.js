@@ -8,11 +8,12 @@ import CreateButton from "@/components/createPost";
 import Image from "next/image";
 
 
-export default function Page({searchParams}) {
+export default function Page({params}) {
 
-  // console.log(searchParams)
+  // console.log(params)
 
   const [recipes, setRecipes] = useState([]);
+  const [title, setTitle] = useState()
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -21,18 +22,11 @@ export default function Page({searchParams}) {
 
       const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-      // if (searchParams === false) {
-      //   const { data } = await supabase.from("recipes").select("*");
-      //   setRecipes(data);
-      // } else {
-      //   const { data } = await supabase.from("recipes").select("*").eq('category', `${searchParams}`);
-      //   setRecipes(data)
-      // }
-
-      const { data } = await supabase.from("recipes").select("*, categories (category_name)");
+      const { data } = await supabase.from("recipes").select("*, categories (category_name)").eq('category', `${params.category}`);
       setRecipes(data);
-
       
+      setTitle(data[0].categories.category_name)
+      console.log(data[0].categories.category_name)
     };
     
     fetchRecipes();
@@ -42,8 +36,8 @@ export default function Page({searchParams}) {
   return (
     <div className="min-h-full flex flex-col justify-around">
       <PageHeader
-        header={"Recipes"}
-        description={"Browse through recipes available"}
+        header={`${title}`}
+        description={`Browse through ${title} recipes available`}
         img={"url('/images/4.avif')"}
       />
       <div className="flex justify-center">
@@ -66,7 +60,7 @@ export default function Page({searchParams}) {
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-2">
                   <h2 className="text-3xl font-bold">{recipe.recipe_title}</h2>
-                  <Link className="text-accent font-bold hover:underline" href={`/recipes/category/${recipe.category}`}>{recipe.categories.category_name}</Link>
+                  <Link className="text-accent font-bold hover:underline" href={`/recipes/category/${recipe.recipe_id}`}>{recipe.categories.category_name}</Link>
                 </div>
                 
                 <div>
