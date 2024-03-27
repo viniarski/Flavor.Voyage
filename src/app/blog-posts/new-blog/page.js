@@ -41,7 +41,7 @@ const CreateBlogForm = () => {
       <div className="container mx-auto px-4 py-8">
         <form
           onSubmit={handleSubmit}
-          className="bg-white shadow-md rounded-lg p-6 text-white"
+          className="bg-white shadow-md rounded-lg p-6 text-black"
         >
           <label className="block mb-4">
             <span className="text-gray-700">Blog Title:</span>
@@ -49,7 +49,7 @@ const CreateBlogForm = () => {
               type="text"
               value={blogTitle}
               onChange={(e) => setBlogTitle(e.target.value)}
-              className="block w-full mt-1 p-2 border rounded-md"
+              className="block w-full mt-1 p-2 border rounded-md bg-white text-black"
             />
           </label>
 
@@ -58,7 +58,7 @@ const CreateBlogForm = () => {
             <textarea
               value={blogContent}
               onChange={(e) => setBlogContent(e.target.value)}
-              className="block w-full mt-1 p-2 border rounded-md"
+              className="block w-full mt-1 p-2 border rounded-md bg-white text-black"
             />
           </label>
 
@@ -68,7 +68,7 @@ const CreateBlogForm = () => {
               type="text"
               value={imgUrl}
               onChange={(e) => setImgUrl(e.target.value)}
-              className="block w-full mt-1 p-2 border rounded-md"
+              className="block w-full mt-1 p-2 border rounded-md bg-white text-black"
             />
           </label>
 
