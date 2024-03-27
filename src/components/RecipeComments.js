@@ -56,6 +56,7 @@ export default function RecipeCommentsSection({ params }) {
           onChange={(event) => setRecipeComment(event.target.value)}
           placeholder="Any thoughts? Reviews? Share here!"
           className="px-4 py-2 rounded-md"
+          required
         />
         <button
           type="submit"
