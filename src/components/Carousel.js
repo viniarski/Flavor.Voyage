@@ -232,7 +232,7 @@ const CarouselComponent = () => {
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-full flex-col items-center justify-center mt-16"
+                className="flex-shrink-0 w-full flex-col items-center justify-center mt-4"
               >
                 <div className="w-[100vw] h-[51vh] rounded-lg overflow-hidden">
                   <h3 className="text-3xl font-bold mb-4 text-center">
