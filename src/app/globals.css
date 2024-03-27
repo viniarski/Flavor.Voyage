@@ -10,8 +10,17 @@
 }
 
 body {
-  background-color: var(--primary-color);
+  background-color: white;
   color: #333;
   margin: 0;
   padding: 0;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'],
+textarea,
+select {
+  background-color: white;
+  color: #333;
 }
