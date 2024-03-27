@@ -13,6 +13,15 @@ export default function BlogCommentsSection({ params }) {
 
   const { user } = useUser();
   const userId = user?.id;
+  const profilepic = user?.imageUrl;
+  let username;
+  if (user && user.username) {
+    username = user.username;
+  } else if (user && user.firstName && user.lastName) {
+    username = `${user.firstName} ${user.lastName}`;
+  } else {
+    username = "Anonymous";
+  }
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -29,6 +38,11 @@ export default function BlogCommentsSection({ params }) {
   }
 
   const handleSaveComment = async () => {
+    await supabase.from("users").insert({
+      user_id: userId,
+      profilepic: profilepic,
+      username: username,
+    });
     let response = await supabase.from("blog_comments").insert({
       blog_comment: blogComment,
       user_id: userId,
