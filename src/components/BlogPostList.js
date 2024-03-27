@@ -32,12 +32,12 @@ export default function BlogPostList() {
           <Image
             src={blog.imgurl}
             alt="picture of delicious food"
-            width={100}
-            height={100}
-            className="m-4 md:mx-4 rounded-md md:max-w-[150px] md:max-h-[150px] lg:max-w-[250px]  "
+            width={120}
+            height={120}
+            className="m-4 rounded-md lg:max-w-[250px] min-h-[120px]"
           />
           <div className="p-4">
-            <h3 className="text-lg md:text-xl lg:text-3xl font-bold mb-2 max-w-[300px] sm:max-w-[400px] md:max-w-[550px] lg:max-w-[800px]">
+            <h3 className="text-lg md:text-xl lg:text-3xl font-bold max-w-[300px] sm:max-w-[400px] md:max-w-[550px] lg:max-w-[800px]">
               {blog.blog_title}
             </h3>
             <p className="md:text-xl mb-4 truncate whitespace-nowrap overflow-hidden invisible sm:visible sm:w-[400px] md:w-[550px] lg:w-[800px] xl:w-[900px]">
