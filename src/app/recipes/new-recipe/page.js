@@ -59,7 +59,7 @@ const CreateRecipeForm = () => {
       <div className="container mx-auto px-4 py-8">
         <form
           onSubmit={handleSubmit}
-          className="bg-white shadow-md rounded-lg p-6 text-white"
+          className="bg-white shadow-md rounded-lg p-6 text-black"
         >
           <label className="block mb-4">
             <span className="text-gray-700">Recipe Title:</span>
@@ -67,7 +67,7 @@ const CreateRecipeForm = () => {
               type="text"
               value={recipeTitle}
               onChange={(e) => setRecipeTitle(e.target.value)}
-              className="block w-full mt-1 p-2 border rounded-md"
+              className="block w-full mt-1 p-2 border rounded-md bg-white text-black"
             />
           </label>
 
@@ -83,7 +83,7 @@ const CreateRecipeForm = () => {
                     handleIngredientInputChange(index, e.target.value)
                   }
                   placeholder="Add ingredient"
-                  className="block w-full mt-1 p-2 border rounded-md"
+                  className="block w-full mt-1 p-2 border rounded-md bg-white text-black"
                 />
               ))}
             </div>
@@ -101,7 +101,7 @@ const CreateRecipeForm = () => {
             <textarea
               value={cookingInstructions}
               onChange={(e) => setCookingInstructions(e.target.value)}
-              className="block w-full mt-1 p-2 border rounded-md"
+              className="block w-full mt-1 p-2 border rounded-md bg-white text-black"
             />
           </label>
 
@@ -111,7 +111,7 @@ const CreateRecipeForm = () => {
               type="number"
               value={servingSize}
               onChange={(e) => setServingSize(e.target.value)}
-              className="block w-full mt-1 p-2 border rounded-md"
+              className="block w-full mt-1 p-2 border rounded-md bg-white text-black"
             />
           </label>
 
@@ -121,7 +121,7 @@ const CreateRecipeForm = () => {
               type="number"
               value={preparationTime}
               onChange={(e) => setPreparationTime(e.target.value)}
-              className="block w-full mt-1 p-2 border rounded-md"
+              className="block w-full mt-1 p-2 border rounded-md bg-white text-black"
             />
           </label>
 
@@ -130,7 +130,7 @@ const CreateRecipeForm = () => {
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="block w-full mt-1 p-2 border rounded-md"
+              className="block w-full mt-1 p-2 border rounded-md bg-white text-black"
             >
               <option value="1">Breakfast</option>
               <option value="2">Lunch</option>
@@ -149,7 +149,7 @@ const CreateRecipeForm = () => {
               type="text"
               value={imgUrl}
               onChange={(e) => setImgUrl(e.target.value)}
-              className="block w-full mt-1 p-2 border rounded-md"
+              className="block w-full mt-1 p-2 border rounded-md bg-white text-black"
             />
           </label>
 

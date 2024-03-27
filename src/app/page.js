@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import RecipeCard from '../components/RecipeCard';
 import BlogPostCard from '../components/BlogPostList';
@@ -11,7 +12,13 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
+
       <section aria-label="Hero Section" className="bg-secondary">
+        <PageHeader
+          header="Welcome to Flavor Voyage"
+          description="Discover delicious recipes and culinary adventures!"
+          img="url('/images/4.avif')"
+        />
         <Search />
         <CarouselComponent />
       </section>

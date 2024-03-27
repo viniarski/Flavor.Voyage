@@ -19,8 +19,7 @@ export default function RecipeCategories() {
     <div className="bg-gray-100 p-8 rounded-lg">
       <div className="grid grid-cols-4 gap-8">
         {categories.map((category) => (
-          <Link key={category} href={`/recipes?category=${category}`}>
-            <div className="flex flex-col items-center">
+            <div key={category} className="flex flex-col items-center">
               <div className="bg-white rounded-full h-32 w-32 flex items-center justify-center shadow relative overflow-hidden transition duration-300 ease-in-out transform hover:scale-105">
                 {category === 'Desserts' && (
                   <Image
@@ -97,7 +96,6 @@ export default function RecipeCategories() {
               </div>
               <span className="text-lg font-bold mt-2">{category}</span>
             </div>
-          </Link>
         ))}
       </div>
     </div>

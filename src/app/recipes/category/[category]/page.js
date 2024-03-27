@@ -1,17 +1,19 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
-import PageHeader from '@/components/pageHeader';
-import CreateButton from '@/components/createPost';
-import Image from 'next/image';
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import { createClient } from "@supabase/supabase-js";
+import PageHeader from "@/components/pageHeader";
+import CreateButton from "@/components/createPost";
+import Image from "next/image";
 
-export default function Page({searchParams}) {
 
-  // console.log(searchParams)
+export default function Page({params}) {
+
+  // console.log(params)
 
   const [recipes, setRecipes] = useState([]);
+  const [title, setTitle] = useState()
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -20,38 +22,26 @@ export default function Page({searchParams}) {
 
       const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-      const { data } = await supabase.from('recipes').select('*');
-      // if (searchParams === false) {
-      //   const { data } = await supabase.from("recipes").select("*");
-      //   setRecipes(data);
-      // } else {
-      //   const { data } = await supabase.from("recipes").select("*").eq('category', `${searchParams}`);
-      //   setRecipes(data)
-      // }
-
-      const { data } = await supabase.from("recipes").select("*, categories (category_name)");
+      const { data } = await supabase.from("recipes").select("*, categories (category_name)").eq('category', `${params.category}`);
       setRecipes(data);
-
       
+      setTitle(data[0].categories.category_name)
+      console.log(data[0].categories.category_name)
     };
-
+    
     fetchRecipes();
+    
   }, []);
 
   return (
     <div className="min-h-full flex flex-col justify-around">
       <PageHeader
-        header={'Recipes'}
-        description={'Browse through recipes available'}
-        img={
-          "url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
-        }
+        header={`${title}`}
+        description={`Browse through ${title} recipes available`}
+        img={"url('/images/4.avif')"}
       />
       <div className="flex justify-center">
-        <CreateButton
-          redirect="/recipes/new-recipe"
-          buttonText="Create Recipe"
-        />
+        <CreateButton redirect="/recipes/new-recipe" buttonText="Create Recipe" />
       </div>
       <div className="min-h-full grid grid-cols-2 justify-items-center">
         {recipes.map((recipe) => (
@@ -70,7 +60,7 @@ export default function Page({searchParams}) {
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-2">
                   <h2 className="text-3xl font-bold">{recipe.recipe_title}</h2>
-                  <Link className="text-accent font-bold hover:underline" href={`/recipes/category/${recipe.category}`}>{recipe.categories.category_name}</Link>
+                  <Link className="text-accent font-bold hover:underline" href={`/recipes/category/${recipe.recipe_id}`}>{recipe.categories.category_name}</Link>
                 </div>
                 
                 <div>

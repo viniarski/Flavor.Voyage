@@ -70,22 +70,22 @@ export default function Page({ params }) {
           <div>
             <div>
               <FacebookShareButton
-                url={`https://flavor-voyage-five.vercel.app/blog-posts/${params.blog_id}`}
+                url={`https://flavor-voyage-five.vercel.app/blog-posts/${params.recipe_id}`}
               >
                 <FacebookIcon size={32} round className="mb-4" />
               </FacebookShareButton>
               <TwitterShareButton
-                url={`https://flavor-voyage-five.vercel.app/blog-posts/${params.blog_id}`}
+                url={`https://flavor-voyage-five.vercel.app/blog-posts/${params.recipe_id}`}
               >
                 <TwitterIcon size={32} round className="ml-2 mb-4" />
               </TwitterShareButton>
               <PinterestShareButton
-                url={`https://flavor-voyage-five.vercel.app/blog-posts/${params.blog_id}`}
+                url={`https://flavor-voyage-five.vercel.app/blog-posts/${params.recipe_id}`}
               >
                 <PinterestIcon size={32} round className="ml-2 mb-4" />
               </PinterestShareButton>
               <WhatsappShareButton
-                url={`https://flavor-voyage-five.vercel.app/blog-posts/${params.blog_id}`}
+                url={`https://flavor-voyage-five.vercel.app/blog-posts/${params.recipe_id}`}
               >
                 <WhatsappIcon size={32} round className="ml-2 mb-4" />
               </WhatsappShareButton>
@@ -111,7 +111,7 @@ export default function Page({ params }) {
             <h2 className="text-lg font-bold mb-2 text-accent">
               Category:{' '}
               <Link
-                href={'#'}
+                href={`/recipes/category/${recipes.category}`}
                 className="text-black font-normal hover:underline"
               >
                 {recipes.categories?.category_name}
