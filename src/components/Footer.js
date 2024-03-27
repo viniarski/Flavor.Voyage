@@ -1,6 +1,6 @@
-"use client";
-import React from "react";
-import Link from "next/link";
+'use client';
+import React from 'react';
+import Link from 'next/link';
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -10,8 +10,8 @@ import {
   PinterestIcon,
   WhatsappShareButton,
   WhatsappIcon,
-} from "next-share";
-import Newsletter from "./Newsletter";
+} from 'next-share';
+import Newsletter from './Newsletter';
 
 const Footer = () => {
   return (
@@ -49,7 +49,7 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/">
+                  <Link href="/about">
                     <span className="text-gray-400 hover:text-white">
                       About Us
                     </span>
@@ -98,16 +98,16 @@ const Footer = () => {
           </p>
           <div className="flex space-x-2">
             <p className="text-gray-400 mt-2">Share Flavor Voyage:</p>
-            <FacebookShareButton url={"https://flavor-voyage-five.vercel.app"}>
+            <FacebookShareButton url={'https://flavor-voyage-five.vercel.app'}>
               <FacebookIcon size={40} round bgStyle={{ opacity: 0 }} />
             </FacebookShareButton>
-            <TwitterShareButton url={"https://flavor-voyage-five.vercel.app"}>
+            <TwitterShareButton url={'https://flavor-voyage-five.vercel.app'}>
               <TwitterIcon size={40} round bgStyle={{ opacity: 0 }} />
             </TwitterShareButton>
-            <PinterestShareButton url={"https://flavor-voyage-five.vercel.app"}>
+            <PinterestShareButton url={'https://flavor-voyage-five.vercel.app'}>
               <PinterestIcon size={40} round bgStyle={{ opacity: 0 }} />
             </PinterestShareButton>
-            <WhatsappShareButton url={"https://flavor-voyage-five.vercel.app"}>
+            <WhatsappShareButton url={'https://flavor-voyage-five.vercel.app'}>
               <WhatsappIcon size={40} round bgStyle={{ opacity: 0 }} />
             </WhatsappShareButton>
           </div>
