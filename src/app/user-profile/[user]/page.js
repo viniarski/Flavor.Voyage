@@ -190,14 +190,15 @@ const ProfilePage = () => {
       </div>
 
       {!isMobile ? (
-        <div className="container mx-auto px-4 mt-12 pb-8">
+        <div className="container mx-auto px-4 mt-12 pb-8 ">
           <h1 className="text-center text-3xl font-bold mb-8">Recipes</h1>
-          <div className="flex flex-col items-center mb-8">
+          <div className="flex flex-col items-center mb-8 ">
             {recipes && recipes.length > 0 ? (
               recipes.map((recipe) => (
                 <div
                   key={recipe.recipe_id}
-                  className="bg-white rounded-lg p-4 shadow-md  "
+                  className="bg-white rounded-lg p-4 shadow-md mb-8"
+                  style={{ minWidth: "91vw" }}
                 >
                   <div className="grid grid-cols-2 gap-8">
                     <img
@@ -206,7 +207,7 @@ const ProfilePage = () => {
                       alt="Chickpea"
                     />
                     <div className="flex flex-col gap-4">
-                      <h2 className="text-2xl font-bold ">
+                      <h2 className="text-2xl font-bold">
                         {recipe.recipe_title}
                       </h2>
                       <div>
