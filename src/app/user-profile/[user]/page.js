@@ -115,7 +115,7 @@ const ProfilePage = () => {
     <div className="bg-gray-200 min-h-screen">
       <PageHeader
         header={`${username}'s Page`}
-        description={userData[0].bio}
+        description={userData[0]?.bio}
         img={`url(${
           userData[0]?.cover_pic ? userData[0].cover_pic : "/images/4.avif"
         })`}

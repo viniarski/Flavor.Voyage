@@ -39,7 +39,7 @@ export default function Page({ params }) {
         .eq("category", `${params.category}`);
       setRecipes(data);
 
-      setTitle(data[0].categories.category_name);
+      setTitle(data[0]?.categories.category_name);
     };
 
     fetchRecipes();
