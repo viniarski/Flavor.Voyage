@@ -109,7 +109,7 @@ export default function Page({ params }) {
             <h2 className="text-lg font-bold mb-2 text-accent">
               Category:{" "}
               <Link
-                href={"#"}
+                href={`/recipes/category/${recipes.category}`}
                 className="text-black font-normal hover:underline"
               >
                 {recipes.categories?.category_name}
