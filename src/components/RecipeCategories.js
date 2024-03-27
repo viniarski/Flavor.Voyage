@@ -19,85 +19,99 @@ export default function RecipeCategories() {
     <div className="bg-gray-100 p-8 rounded-lg">
       <div className="grid grid-cols-4 gap-8">
         {categories.map((category) => (
-          <Link key={category} href={`/recipes?category=${category}`}>
-            <div className="flex flex-col items-center">
+            <div key={category} className="flex flex-col items-center">
               <div className="bg-white rounded-full h-32 w-32 flex items-center justify-center shadow relative overflow-hidden transition duration-300 ease-in-out transform hover:scale-105">
                 {category === 'Desserts' && (
-                  <Image
-                    src="/images/6.avif"
-                    alt="Dessert"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-full"
-                  />
+                  <Link href={'/recipes/category/5'}>
+                    <Image
+                      src="/images/6.avif"
+                      alt="Dessert"
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-full"
+                    />
+                  </Link>
                 )}
                 {category === 'Vegetarian' && (
-                  <Image
-                    src="/images/8.avif"
-                    alt="Vegetarian"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-full"
-                  />
+                  <Link href={'/recipes/category/6'}>
+                    <Image
+                      src="/images/8.avif"
+                      alt="Vegetarian"
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-full"
+                    />
+                  </Link>
                 )}
                 {category === 'Dinner' && (
-                  <Image
-                    src="/images/10.avif"
-                    alt="Dinner"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-full"
-                  />
+                  <Link href={'/recipes/category/3'}>
+                    <Image
+                      src="/images/10.avif"
+                      alt="Dinner"
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-full"
+                    />
+                  </Link>
                 )}
                 {category === 'Vegan' && (
-                  <Image
-                    src="/images/9.avif"
-                    alt="Vegen"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-full"
-                  />
+                  <Link href={'/recipes/category/7'}>
+                    <Image
+                      src="/images/9.avif"
+                      alt="Vegen"
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-full"
+                    />
+                  </Link>
                 )}
                 {category === 'Snacks' && (
-                  <Image
-                    src="/images/11.avif"
-                    alt="Snacks"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-full"
-                  />
+                  <Link href={'/recipes/category/4'}>
+                    <Image
+                      src="/images/11.avif"
+                      alt="Snacks"
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-full"
+                    />
+                  </Link>
                 )}
                 {category === 'Gluten-free' && (
-                  <Image
-                    src="/images/12.avif"
-                    alt="Gluten Free"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-full"
-                  />
+                  <Link href={'/recipes/category/8'}>
+                    <Image
+                      src="/images/12.avif"
+                      alt="Gluten Free"
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-full"
+                    />
+                  </Link>
                 )}
                 {category === 'Breakfast' && (
-                  <Image
-                    src="/images/14.avif"
-                    alt="Snacks"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-full"
-                  />
+                  <Link href={'/recipes/category/1'}>
+                    <Image
+                      src="/images/14.avif"
+                      alt="Snacks"
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-full"
+                    />
+                  </Link>
                 )}
                 {category === 'Lunch' && (
-                  <Image
-                    src="/images/13.avif"
-                    alt="Gluten Free"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-full"
-                  />
+                  <Link href={'/recipes/category/2'}>
+                    <Image
+                      src="/images/13.avif"
+                      alt="Gluten Free"
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-full"
+                    />
+                  </Link>
                 )}
               </div>
               <span className="text-lg font-bold mt-2">{category}</span>
             </div>
-          </Link>
         ))}
       </div>
     </div>
