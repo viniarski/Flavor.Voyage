@@ -17,6 +17,21 @@ const ProfilePage = () => {
   const [coverPic, setCoverPic] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [userData, setUserData] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const { user, isLoaded } = useUser();
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -174,59 +189,102 @@ const ProfilePage = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 mt-12 pb-8">
-        <h1 className="text-center text-3xl font-bold mb-8">Recipes</h1>
-        <div className="flex flex-col items-center mb-8">
-          {recipes && recipes.length > 0 ? (
-            recipes.map((recipe) => (
-              <div
-                key={recipe.recipe_id}
-                className="bg-white rounded-lg p-4 shadow-md  "
-              >
-                <div className="grid grid-cols-2 gap-8">
-                  <img
-                    src={recipe.imgurl}
-                    className="rounded-lg"
-                    alt="Chickpea"
-                  />
-                  <div className="flex flex-col gap-4">
-                    <h2 className="text-2xl font-bold ">
-                      {recipe.recipe_title}
-                    </h2>
-                    <div>
-                      <p className="text-lg font-bold mb-2 text-accent">
-                        Ingredients:
-                      </p>
-                      <ul className="text-sm list-disc list-inside">
-                        {recipe.recipe_ingredients.map((ingredient, i) => (
-                          <li key={i} className="text-gray-700">
-                            {ingredient}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="flex items-center">
-                      <Link
-                        href={`/recipes/${recipe.recipe_id}`}
-                        className="bg-accent text-lg text-white px-4 py-2 rounded-md"
-                      >
-                        View Recipe
-                      </Link>
+      {!isMobile ? (
+        <div className="container mx-auto px-4 mt-12 pb-8">
+          <h1 className="text-center text-3xl font-bold mb-8">Recipes</h1>
+          <div className="flex flex-col items-center mb-8">
+            {recipes && recipes.length > 0 ? (
+              recipes.map((recipe) => (
+                <div
+                  key={recipe.recipe_id}
+                  className="bg-white rounded-lg p-4 shadow-md  "
+                >
+                  <div className="grid grid-cols-2 gap-8">
+                    <img
+                      src={recipe.imgurl}
+                      className="rounded-lg"
+                      alt="Chickpea"
+                    />
+                    <div className="flex flex-col gap-4">
+                      <h2 className="text-2xl font-bold ">
+                        {recipe.recipe_title}
+                      </h2>
+                      <div>
+                        <p className="text-lg font-bold mb-2 text-accent">
+                          Ingredients:
+                        </p>
+                        <ul className="text-sm list-disc list-inside">
+                          {recipe.recipe_ingredients.map((ingredient, i) => (
+                            <li key={i} className="text-gray-700">
+                              {ingredient}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="flex items-center">
+                        <Link
+                          href={`/recipes/${recipe.recipe_id}`}
+                          className="bg-accent text-lg text-white px-4 py-2 rounded-md"
+                        >
+                          View Recipe
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
+              ))
+            ) : (
+              <div className="text-center  mb-8 flex items-center">
+                <CreateButton
+                  redirect="/recipes/new-recipe"
+                  buttonText="Create Your First Recipe"
+                />
               </div>
-            ))
-          ) : (
-            <div className="text-center  mb-8 flex items-center">
-              <CreateButton
-                redirect="/recipes/new-recipe"
-                buttonText="Create Your First Recipe"
-              />
-            </div>
-          )}
+            )}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="container mx-auto mt-12 pb-8">
+          <h1 className="text-center text-3xl font-bold mb-8">Recipes</h1>
+          <div className="flex flex-col items-center mb-8">
+            {recipes && recipes.length > 0 ? (
+              recipes.map((recipe) => (
+                <div
+                  key={recipe.recipe_id}
+                  className="flex-shrink-0 w-full flex-col items-center justify-center mt-4 mb-8"
+                >
+                  <div className="w-[100vw] h-[45vh]  overflow-hidden mt-2">
+                    <h2 className="text-2xl font-bold text-center">
+                      {recipe.recipe_title}
+                    </h2>
+                    <Link
+                      href={`/recipes/${recipe.recipe_id}`}
+                      className="block w-full bg-accent text-lg text-white px-4 py-2  hover:scale-105 active:scale-100 transition transform duration-200 ease-in-out text-center"
+                    >
+                      View Recipe
+                    </Link>
+                    <img
+                      src={recipe.imgurl}
+                      className="w-full h-full object-cover"
+                      alt="Chickpea"
+                    />
+                    <div className="flex flex-col gap-4">
+                      <div className="flex items-center"></div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="text-center  mb-8 flex items-center">
+                <CreateButton
+                  redirect="/recipes/new-recipe"
+                  buttonText="Create Your First Recipe"
+                />
+              </div>
+            )}
+          </div>
+        </div>
+      )}
       <div className="flex justify-center pb-16">
         <UserProfile />
       </div>
