@@ -24,7 +24,7 @@ const About = () => {
     <section
       className="py-16 bg-cover bg-center h-screen relative"
       style={{
-        backgroundImage: "url('/images/1.avif')",
+        backgroundImage: "url('/images/1.webp')",
         height: windowWidth < 1281 ? '80vh' : '60vh',
       }}
       aria-label="About Us"

@@ -1,9 +1,9 @@
-"use client";
-import { useState, useEffect } from "react";
-import { createClient } from "@supabase/supabase-js";
-import PageHeader from "@/components/pageHeader";
-import Image from "next/image";
-import BlogCommentsSection from "@/components/BlogComments";
+'use client';
+import { useState, useEffect } from 'react';
+import { createClient } from '@supabase/supabase-js';
+import PageHeader from '@/components/pageHeader';
+import Image from 'next/image';
+import BlogCommentsSection from '@/components/BlogComments';
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -13,7 +13,7 @@ import {
   PinterestIcon,
   WhatsappShareButton,
   WhatsappIcon,
-} from "next-share";
+} from 'next-share';
 
 export default function DynamicBlogPostPage({ params }) {
   const [blog, setBlog] = useState([]);
@@ -26,9 +26,9 @@ export default function DynamicBlogPostPage({ params }) {
       const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
       const { data } = await supabase
-        .from("blogs")
-        .select("*, users (user_id, username)")
-        .eq("blog_id", `${params.blog_id}`);
+        .from('blogs')
+        .select('*, users (user_id, username)')
+        .eq('blog_id', `${params.blog_id}`);
 
       setBlog(data[0]);
     };
@@ -41,7 +41,7 @@ export default function DynamicBlogPostPage({ params }) {
       <PageHeader
         header={blog.blog_title}
         description={`By ${blog.users?.username}`}
-        img={"url('/images/4.avif')"}
+        img={"url('/images/4.webp')"}
       />
       <div className="flex flex-col m-4 items-center lg:flex-row lg:items-start">
         <Image

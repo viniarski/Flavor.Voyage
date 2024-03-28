@@ -1,14 +1,14 @@
-import BlogPostList from "@/components/BlogPostList";
-import CreateButton from "@/components/createPost";
-import PageHeader from "@/components/pageHeader";
+import BlogPostList from '@/components/BlogPostList';
+import CreateButton from '@/components/createPost';
+import PageHeader from '@/components/pageHeader';
 
 export default async function BlogPostsPage({ searchParams }) {
   return (
     <div>
       <PageHeader
-        header={"Blogs"}
-        description={"Check out our latest blogs"}
-        img={"url('/images/4.avif')"}
+        header={'Blogs'}
+        description={'Check out our latest blogs'}
+        img={"url('/images/4.webp')"}
       />
       <div className="flex justify-center mt-8">
         <CreateButton

@@ -7,7 +7,7 @@ const About = () => {
         header="About Us"
         description="We are a group of passionate people who are passionate about cooking
             and sharing our knowledge with the world."
-        img="url('/images/4.avif')"
+        img="url('/images/4.webp')"
       />
       <div className="container mx-auto px-4 py-16">
         <h2 className="text-3xl font-bold mb-8 text-accent">About Us</h2>
