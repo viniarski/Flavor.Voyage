@@ -59,7 +59,7 @@ const ContactForm = async () => {
             name="message"
             required
             rows="4"
-            className="mt-1 p-2 w-full border rounded-md text-white"
+            className="mt-1 p-2 w-full border rounded-md text-black bg-white"
             placeholder="Enter your message"
           ></textarea>
         </div>
