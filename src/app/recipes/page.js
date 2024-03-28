@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
-import PageHeader from "@/components/pageHeader";
-import CreateButton from "@/components/createPost";
-import Image from "next/image";
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import { createClient } from '@supabase/supabase-js';
+import PageHeader from '@/components/pageHeader';
+import CreateButton from '@/components/createPost';
+import Image from 'next/image';
 
 export default function Page({ searchParams }) {
   // console.log(searchParams)
@@ -21,10 +21,10 @@ export default function Page({ searchParams }) {
 
     handleResize();
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -44,8 +44,8 @@ export default function Page({ searchParams }) {
       // }
 
       const { data } = await supabase
-        .from("recipes")
-        .select("*, categories (category_name)");
+        .from('recipes')
+        .select('*, categories (category_name)');
       setRecipes(data);
     };
 
@@ -55,9 +55,9 @@ export default function Page({ searchParams }) {
   return (
     <div className="min-h-full flex flex-col justify-around">
       <PageHeader
-        header={"Recipes"}
-        description={"Browse through recipes available"}
-        img={"url('/images/4.avif')"}
+        header={'Recipes'}
+        description={'Browse through recipes available'}
+        img={"url('/images/4.webp')"}
       />
       <div className="flex justify-center">
         <CreateButton

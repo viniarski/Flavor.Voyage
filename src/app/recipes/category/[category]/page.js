@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
-import PageHeader from "@/components/pageHeader";
-import CreateButton from "@/components/createPost";
-import Image from "next/image";
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import { createClient } from '@supabase/supabase-js';
+import PageHeader from '@/components/pageHeader';
+import CreateButton from '@/components/createPost';
+import Image from 'next/image';
 
 export default function Page({ params }) {
   const [recipes, setRecipes] = useState([]);
@@ -20,10 +20,10 @@ export default function Page({ params }) {
 
     handleResize();
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
   useEffect(() => {
@@ -34,9 +34,9 @@ export default function Page({ params }) {
       const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
       const { data } = await supabase
-        .from("recipes")
-        .select("*, categories (category_name)")
-        .eq("category", `${params.category}`);
+        .from('recipes')
+        .select('*, categories (category_name)')
+        .eq('category', `${params.category}`);
       setRecipes(data);
 
       setTitle(data[0]?.categories.category_name);
@@ -48,9 +48,9 @@ export default function Page({ params }) {
   return (
     <div className="min-h-full flex flex-col justify-around">
       <PageHeader
-        header={`${title ? title : "No recipes found"}`}
+        header={`${title ? title : 'No recipes found'}`}
         description={title ? `Browse through ${title} recipes available` : null}
-        img={"url('/images/4.avif')"}
+        img={"url('/images/4.webp')"}
       />
       <div className="flex justify-center">
         <CreateButton
